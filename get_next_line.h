@@ -22,6 +22,7 @@ char	*get_next_line(int fd);
 
 ssize_t	*ft_search_nl(char *str);
 
+
 size_t	ft_strlen(char *str);
 size_t	ft_strlcpy(char *dest, char *src, size_t nbyte);
 size_t	ft_strlcat(char *dest, char *src, size_t nbyte);

@@ -17,22 +17,29 @@ char	*get_next_line(int fd)
 	static char	*save;
 	char		*buf;
 	ssize_t		offset;
+	ssize_t		rbyte;
+	char		*result;
 
 	if (fd < 0)
 		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	while (read(fd, buf, BUFFER_SIZE) != -1)
+	while (??????)
 	{
-		offset = ft_search_nl(buf);
-		if (offset == -1) ;
-			// bla bla
-		buf[offset] = '\0';
-		 = ft_strjoin(save, buf);
+		rbyte = read(fd, buf, BUFFER_SIZE);
+		buf[rbyte] = '\0';
 
-		if (offset == BUFFER_SIZE) ;
-			//buf 뒤에 남은거 없음
+		offset = ft_search_nl(buf);
+		save = ft_strjoin(save, buf);
+
+		save = buf[offset + 1];
+
+		if (offset == -1) ;
+		{
+			free(save);
+			return (result);
+		}
 	}
 }
 
@@ -44,7 +51,10 @@ ssize_t	ft_search_nl(char *str)
 	while (str[offset])
 	{
 		if (str[offset] == '\n')
+		{
+			str[offset] = '\0';
 			return (offset);
+		}
 		offset++;
 	}
 	return (-1);
