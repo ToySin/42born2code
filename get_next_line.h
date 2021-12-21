@@ -14,18 +14,18 @@
 # define GET_NEXT_LINE
 
 # include <unistd.h>
+# include <fcntl.h>
 # include <stdlib.h>
 
 # define BUFFER_SIZE 42
 
 char	*get_next_line(int fd);
 
-ssize_t	*ft_search_nl(char *str);
-
+ssize_t	*ft_search_and_set_nl(char *str);
+char	*ft_string_adder(char *save, char *buf);
+char	*ft_linetrim(char *save, char *buf, ssize_t offset);
 
 size_t	ft_strlen(char *str);
-size_t	ft_strlcpy(char *dest, char *src, size_t nbyte);
-size_t	ft_strlcat(char *dest, char *src, size_t nbyte);
 char	*ft_strjoin(char *s1, char *s2);
 
 #endif

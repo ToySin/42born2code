@@ -17,33 +17,30 @@ char	*get_next_line(int fd)
 	static char	*save;
 	char		*buf;
 	ssize_t		offset;
-	ssize_t		rbyte;
-	char		*result;
 
-	if (fd < 0)
+	if (fd < 2 || OPEN_MAX < fd || BUFFER_SIZE < 1)
 		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
-	while (??????)
+	offset = -1;
+	while (offset == -1)
 	{
-		rbyte = read(fd, buf, BUFFER_SIZE);
-		buf[rbyte] = '\0';
-
-		offset = ft_search_nl(buf);
-		save = ft_strjoin(save, buf);
-
-		save = buf[offset + 1];
-
-		if (offset == -1) ;
+		offset = read(fd, buf, BUFFER_SIZE);
+		if (offset < 1)
 		{
-			free(save);
-			return (result);
+			if (!offset)
+				offset = -1;
+			break ;
 		}
+		buf[offset] = '\0';
+		save = ft_string_adder(save, buf);
+		offset = ft_search_and_set_nl(save);
 	}
+	return (ft_linetrim(save, buf, offset));
 }
 
-ssize_t	ft_search_nl(char *str)
+ssize_t	ft_search_and_set_nl(char *str)
 {
 	ssize_t	offset;
 
@@ -58,4 +55,36 @@ ssize_t	ft_search_nl(char *str)
 		offset++;
 	}
 	return (-1);
+}
+
+char	*ft_string_adder(char *save, char *buf)
+{
+	char	*result;
+
+	if (save)
+		result = ft_strjoin(save, buf);
+	else
+		result = ft_strjoin("\0", buf);
+	free(save);
+	return (result);
+}
+
+char	*ft_linetrim(char *save, char *buf, sszie_t offset)
+{
+	char	*trimed;
+	char	*tmp;
+
+	trimed = NULL;
+	if (save)
+	{
+		trimed = ft_strjoin(save, "\0");
+		tmp = NULL;
+		if (offset != -1)
+			tmp = ft_strjoin(save + offset + 1, "\0");
+		free(save);
+		save = tmp;
+	}
+	free(buf);
+	buf = NULL;
+	return (trimed);
 }
