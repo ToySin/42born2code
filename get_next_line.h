@@ -21,10 +21,6 @@
 
 char	*get_next_line(int fd);
 
-ssize_t	*ft_search_and_set_nl(char *str);
-char	*ft_string_adder(char *save, char *buf);
-char	*ft_linetrim(char *save, char *buf, ssize_t offset);
-
 size_t	ft_strlen(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 
