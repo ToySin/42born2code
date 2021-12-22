@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 11:41:45 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/22 15:12:39 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/22 15:35:01 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,7 @@ static ssize_t	ft_search_and_set_nl(char *str)
 	while (str[offset])
 	{
 		if (str[offset] == '\n')
-		{
-			str[offset] = '\0';
 			return (offset);
-		}
 		offset++;
 	}
 	return (-1);
