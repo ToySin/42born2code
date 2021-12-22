@@ -6,11 +6,15 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 11:41:45 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/19 17:01:31 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/22 15:12:39 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+static ssize_t	ft_search_and_set_nl(char *str);
+static char		*ft_string_adder(char *save, char *buf);
+static char		*ft_linetrim(char *save, char *buf, ssize_t offset);
 
 char	*get_next_line(int fd)
 {
@@ -18,15 +22,27 @@ char	*get_next_line(int fd)
 	char		*buf;
 	ssize_t		offset;
 
-	if (fd < 2 || OPEN_MAX < fd || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
 	offset = -1;
+
+	if (save)
+	{
+		printf("\n == start_get_next_line ==\n");
+		for (int i = 0; i < BUFFER_SIZE; i++)
+			printf(" %d", save[i]);
+		printf("\n");
+	}
+
 	while (offset == -1)
 	{
 		offset = read(fd, buf, BUFFER_SIZE);
+
+		printf("read offset: %ld\n", offset);
+
 		if (offset < 1)
 		{
 			if (!offset)
@@ -36,11 +52,19 @@ char	*get_next_line(int fd)
 		buf[offset] = '\0';
 		save = ft_string_adder(save, buf);
 		offset = ft_search_and_set_nl(save);
+
+		printf("nl offset: %ld\n", offset);
 	}
+
+	printf("\n == end_get_next_line ==\n");
+	for (int i = 0; i < BUFFER_SIZE; i++)
+		printf(" %d", save[i]);
+	printf("\n");
+
 	return (ft_linetrim(save, buf, offset));
 }
 
-ssize_t	ft_search_and_set_nl(char *str)
+static ssize_t	ft_search_and_set_nl(char *str)
 {
 	ssize_t	offset;
 
@@ -57,7 +81,7 @@ ssize_t	ft_search_and_set_nl(char *str)
 	return (-1);
 }
 
-char	*ft_string_adder(char *save, char *buf)
+static char	*ft_string_adder(char *save, char *buf)
 {
 	char	*result;
 
@@ -69,7 +93,7 @@ char	*ft_string_adder(char *save, char *buf)
 	return (result);
 }
 
-char	*ft_linetrim(char *save, char *buf, sszie_t offset)
+static char	*ft_linetrim(char *save, char *buf, ssize_t offset)
 {
 	char	*trimed;
 	char	*tmp;
@@ -86,5 +110,14 @@ char	*ft_linetrim(char *save, char *buf, sszie_t offset)
 	}
 	free(buf);
 	buf = NULL;
+
+	if (save)
+	{
+		printf("\n == ft_linetrim ==\n");
+		for (int i = 0; i < BUFFER_SIZE; i++)
+			printf(" %d", save[i]);
+		printf("\n");
+	}
+
 	return (trimed);
 }
