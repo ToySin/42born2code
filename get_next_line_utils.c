@@ -22,6 +22,32 @@ size_t	ft_strlen(char *str)
 	return (len);
 }
 
+char	*ft_substr(char *s, unsigned int start, size_t len)
+{
+	char	*sub_str;
+	size_t	s_len;
+	size_t	index;
+
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (s_len < start)
+		return (ft_strjoin("", ""));
+	if (s_len - start < len)
+		len = s_len - start;
+	sub_str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!sub_str)
+		return (NULL);
+	index = 0;
+	while (index < len)
+	{
+		sub_str[index] = s[start + index];
+		index++;
+	}
+	sub_str[index] = '\0';
+	return (sub_str);
+}
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*joined;

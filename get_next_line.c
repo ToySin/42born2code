@@ -6,115 +6,90 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 11:41:45 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/22 15:35:01 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/22 17:18:24 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static ssize_t	ft_search_and_set_nl(char *str);
-static char		*ft_string_adder(char *save, char *buf);
-static char		*ft_linetrim(char *save, char *buf, ssize_t offset);
+static size_t	ft_offset_nl(char *s);
+static int		ft_string_adder(int fd, char **save, char *buf);
+static char		*ft_linetrim(char **save);
 
 char	*get_next_line(int fd)
 {
 	static char	*save;
 	char		*buf;
-	ssize_t		offset;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
+	if (!save)
+		save = ft_strjoin("", "");
+	if (!save);
+		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
+	{
+		free(save);
+		save = NULL;
 		return (NULL);
-	offset = -1;
-
-	if (save)
-	{
-		printf("\n == start_get_next_line ==\n");
-		for (int i = 0; i < BUFFER_SIZE; i++)
-			printf(" %d", save[i]);
-		printf("\n");
 	}
-
-	while (offset == -1)
-	{
-		offset = read(fd, buf, BUFFER_SIZE);
-
-		printf("read offset: %ld\n", offset);
-
-		if (offset < 1)
-		{
-			if (!offset)
-				offset = -1;
-			break ;
-		}
-		buf[offset] = '\0';
-		save = ft_string_adder(save, buf);
-		offset = ft_search_and_set_nl(save);
-
-		printf("nl offset: %ld\n", offset);
-	}
-
-	printf("\n == end_get_next_line ==\n");
-	for (int i = 0; i < BUFFER_SIZE; i++)
-		printf(" %d", save[i]);
-	printf("\n");
-
-	return (ft_linetrim(save, buf, offset));
+	if (!ft_string_adder(fd, &save, buf))
+		return (NULL);
+	free(buf);
+	return (ft_linetrim(&save));
 }
 
-static ssize_t	ft_search_and_set_nl(char *str)
+static size_t	ft_offset_nl(char *s)
 {
-	ssize_t	offset;
+	size_t	offset;
 
 	offset = 0;
-	while (str[offset])
+	while (s[offset])
 	{
-		if (str[offset] == '\n')
+		if (s[offset] == '\n')
 			return (offset);
 		offset++;
 	}
-	return (-1);
+	return (offset);
 }
 
-static char	*ft_string_adder(char *save, char *buf)
+static int	ft_string_adder(int fd, char **save, char *buf)
 {
-	char	*result;
+	ssize_t	rbyte;
+	char	*tmp;
 
-	if (save)
-		result = ft_strjoin(save, buf);
-	else
-		result = ft_strjoin("\0", buf);
-	free(save);
-	return (result);
+	rbyte = 1;
+	while (rbyte || !ft_strchr(*save, '\n'))
+	{
+		rbyte = read(fd, buf, BUFFER_SIZE);
+		if (rbyte == -1)
+		{
+			free(*save);
+			free(buf);
+			*save = NULL;
+			return (0);
+		}
+		buf[rbyte] = '\0';
+		tmp = ft_strjoin(*save, buf);
+		free(*save);
+		*save = tmp;
+	}
+	return (1);
 }
 
-static char	*ft_linetrim(char *save, char *buf, ssize_t offset)
+static char	*ft_linetrim(char **save)
 {
+	size_t	offset;
 	char	*trimed;
 	char	*tmp;
 
-	trimed = NULL;
-	if (save)
-	{
-		trimed = ft_strjoin(save, "\0");
-		tmp = NULL;
-		if (offset != -1)
-			tmp = ft_strjoin(save + offset + 1, "\0");
-		free(save);
-		save = tmp;
-	}
-	free(buf);
-	buf = NULL;
-
-	if (save)
-	{
-		printf("\n == ft_linetrim ==\n");
-		for (int i = 0; i < BUFFER_SIZE; i++)
-			printf(" %d", save[i]);
-		printf("\n");
-	}
-
+	tmp = NULL;
+	offset = ft_offset_nl(*save);
+	trimed = ft_substr(*save, 0, offset);
+	if (offset < ft_strlen(*save))
+		tmp = ft_strjoin(*save + offset + 1, "");
+	free(*save);
+	*save = tmp;
 	return (trimed);
 }
