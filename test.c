@@ -7,8 +7,7 @@ int main()
 	char *line;
 
 	while (line = get_next_line(fd))
-	{
-		printf("line: %s", line);
-	}
+		printf("%s", line);
+
 	return (0);
 }

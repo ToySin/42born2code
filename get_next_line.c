@@ -6,41 +6,44 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 11:41:45 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/22 17:27:11 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/22 23:02:47 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 static size_t	ft_offset_nl(char *s);
-static int		ft_string_adder(int fd, char **save, char *buf);
-static char		*ft_linetrim(char **save);
+static char		*ft_string_adder(char *save, char *buf, int mode);
+static char		*ft_linetrim(char *save, char *buf);
 
 char	*get_next_line(int fd)
 {
 	static char	*save;
 	char		*buf;
+	ssize_t		rbyte;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	if (!save)
-		save = ft_strjoin("", "");
-
-	printf("Pass\n");
-	printf("%p\n", save);
-
-	if (!save);
-		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
+		return (NULL);
+	rbyte = 1;
+	while (rbyte && (!save || !ft_strchr(save, '\n')))
 	{
-		free(save);
-		save = NULL;
-		return (NULL);
+		rbyte = read(fd, buf, BUFFER_SIZE);
+		if (rbyte == -1)
+		{
+			free(save);
+			free(buf);
+			save = NULL;
+			return (NULL);
+		}
+		buf[rbyte] = '\0';
+		save = ft_string_adder(save, buf, 1);
 	}
-	if (!ft_string_adder(fd, &save, buf))
-		return (NULL);
-	return (ft_linetrim(&save));
+	buf = ft_linetrim(save, buf);
+	save = ft_string_adder(save, buf, 0);
+	return (buf);
 }
 
 static size_t	ft_offset_nl(char *s)
@@ -57,49 +60,38 @@ static size_t	ft_offset_nl(char *s)
 	return (offset);
 }
 
-static int	ft_string_adder(int fd, char **save, char *buf)
+static char	*ft_string_adder(char *save, char *buf, int mode)
 {
-	ssize_t	rbyte;
 	char	*tmp;
+	size_t	offset;
 
-	rbyte = 1;
-	while (rbyte || !ft_strchr(*save, '\n'))
+	if (mode && (*buf))
 	{
-		rbyte = read(fd, buf, BUFFER_SIZE);
-		if (rbyte == -1)
-		{
-			free(*save);
-			free(buf);
-			*save = NULL;
-			return (0);
-		}
-		buf[rbyte] = '\0';
-		tmp = ft_strjoin(*save, buf);
-		free(*save);
-		*save = tmp;
+		if (save)
+			tmp = ft_strjoin(save, buf);
+		else
+			tmp = ft_strjoin("", buf);
+		free(save);
+		return (tmp);
 	}
-	free(buf);
-
-	printf("\n == end_of_ft_string_adder == \n");
-	for (int i = 0; *save[i]; i++)
-		printf(" %d", *save[i]);
-	printf("\n");
-
-	return (1);
+	else
+	{
+		offset = ft_offset_nl(save);
+		tmp = ft_strjoin(save + offset + 1, "");
+		free(save);
+		return (tmp);
+	}
 }
 
-static char	*ft_linetrim(char **save)
+static char	*ft_linetrim(char *save, char *buf)
 {
 	size_t	offset;
 	char	*trimed;
-	char	*tmp;
 
-	tmp = NULL;
-	offset = ft_offset_nl(*save);
-	trimed = ft_substr(*save, 0, offset);
-	if (offset < ft_strlen(*save))
-		tmp = ft_strjoin(*save + offset + 1, "");
-	free(*save);
-	*save = tmp;
+	free(buf);
+	if (!(*save))
+		return (NULL);
+	offset = ft_offset_nl(save);
+	trimed = ft_substr(save, 0, offset + 1);
 	return (trimed);
 }
