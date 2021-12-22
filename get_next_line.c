@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 11:41:45 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/22 17:18:24 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/22 17:27:11 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!save)
 		save = ft_strjoin("", "");
+
+	printf("Pass\n");
+	printf("%p\n", save);
+
 	if (!save);
 		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
@@ -36,7 +40,6 @@ char	*get_next_line(int fd)
 	}
 	if (!ft_string_adder(fd, &save, buf))
 		return (NULL);
-	free(buf);
 	return (ft_linetrim(&save));
 }
 
@@ -75,6 +78,13 @@ static int	ft_string_adder(int fd, char **save, char *buf)
 		free(*save);
 		*save = tmp;
 	}
+	free(buf);
+
+	printf("\n == end_of_ft_string_adder == \n");
+	for (int i = 0; *save[i]; i++)
+		printf(" %d", *save[i]);
+	printf("\n");
+
 	return (1);
 }
 

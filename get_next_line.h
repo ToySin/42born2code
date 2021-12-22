@@ -17,6 +17,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
+#include <stdio.h>
+
 # define BUFFER_SIZE 42
 
 char	*get_next_line(int fd);
