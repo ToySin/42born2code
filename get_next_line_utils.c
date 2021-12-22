@@ -51,3 +51,16 @@ char	*ft_strjoin(char *s1, char *s2)
 	joined[s1_len + s2_len] = '\0';
 	return (joined);
 }
+
+char	*ft_strchr(char *s, int c)
+{
+	if (!c)
+		return (s + ft_strlen(s));
+	while (*s)
+	{
+		if (*s == (char)c)
+			return (s);
+		s++;
+	}
+	return (NULL);
+}
