@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/24 16:30:01 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/24 16:37:48 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 	}
 	if (dstsize)
 		dest[index] = '\0';
-	return (ft_strlen(src));
+	return (ft_strlen((char *)src));
 }
 
 char	*ft_strchr(char *s, int c)
@@ -52,7 +52,6 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	s1_len;
 	size_t	s2_len;
-	size_t	len;
 	char	*comb;
 
 	if (!s1 || !s2)

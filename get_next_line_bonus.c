@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/24 16:31:46 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/24 16:37:02 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*get_next_line(int fd)
 	rbyte = read(fd, buf, BUFFER_SIZE);
 	while (rbyte > 0)
 	{
-		buf[rbyte];
+		buf[rbyte] = '\0';
 		save[fd] = ft_string_adder(save[fd], buf);
 		nl_ptr = ft_strchr(save[fd], '\n');
 		if (nl_ptr)
@@ -58,6 +58,7 @@ static char *ft_line_with_nl(char **save, char *buf, char *nl_ptr)
 	char	*line;
 	char	*tmp;
 
+	free(buf);
 	line = (char *)malloc(sizeof(char) * (nl_ptr - *save + 2));
 	if (!line)
 		return (NULL);
