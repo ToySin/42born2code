@@ -3,8 +3,8 @@ CFLAG = -Wall -Werror -Wextra -g
 RM = rm -f
 
 SRC = \
-	get_next_line.c \
-	get_next_line_utils.c \
+	get_next_line_bonus.c \
+	get_next_line_utils_bonus.c \
 	test.c \
 
 OBJS = $(SRC:.c=.o)
