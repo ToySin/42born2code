@@ -18,11 +18,11 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 100000
+#  define BUFFER_SIZE 100000
 # endif
 
 # ifndef OPEN_MAX
-# define OPEN_MAX 65536
+#  define OPEN_MAX 65536
 # endif
 
 char	*get_next_line(int fd);

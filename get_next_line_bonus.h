@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:35 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 22:00:15 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 22:22:51 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 100000
+#  define BUFFER_SIZE 100000
 # endif
 
 # ifndef OPEN_MAX
-# define OPEN_MAX 65536
+#  define OPEN_MAX 65536
 # endif
 
 char	*get_next_line(int fd);
