@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 20:31:27 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 20:46:47 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ static char	*ft_string_adder(int fd, char *save)
 	if (!buf)
 		return (NULL);
 	rbyte = read(fd, buf, BUFFER_SIZE);
-	while (rbyte > 0 && !ft_my_strchr(save, '\n'))
+	while (rbyte > 0)
 	{
 		buf[rbyte] = '\0';
 		save = ft_my_strjoin(save, buf);
+		if (ft_my_strchr(save, '\n'))
+			break ;
 		rbyte = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
