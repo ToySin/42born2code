@@ -7,7 +7,11 @@ int main()
 	char *line;
 
 	while (line = get_next_line(fd))
-		printf("%s", line);
-
+	{
+		for (int i = 0; line[i]; i++)
+			printf(" %d", line[i]);
+		printf("\n");
+	}
+	printf("This line is attached end of line\n");
 	return (0);
 }
