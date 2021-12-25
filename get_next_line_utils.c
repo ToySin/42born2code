@@ -12,7 +12,7 @@
 
 #include "get_next_line_bonus.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
+void	ft_my_strlcpy(char *dest, const char *src, size_t dstsize)
 {
 	size_t	index;
 
@@ -24,7 +24,6 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 	}
 	if (dstsize)
 		dest[index] = '\0';
-	return (ft_strlen((char *)src));
 }
 
 char	*ft_my_strchr(char *s, int c)
@@ -57,8 +56,8 @@ char	*ft_my_strjoin(char *s1, char *s2)
 	comb = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!comb)
 		return (NULL);
-	ft_strlcpy(comb, s1, s1_len + 1);
-	ft_strlcpy(comb + s1_len, s2, s2_len + 1);
+	ft_my_strlcpy(comb, s1, s1_len + 1);
+	ft_my_strlcpy(comb + s1_len, s2, s2_len + 1);
 	free(s1);
 	return (comb);
 }
@@ -76,6 +75,6 @@ char	*ft_strdup(char *s)
 	dup = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dup)
 		return (NULL);
-	ft_strlcpy(dup, s, len + 1);
+	ft_my_strlcpy(dup, s, len + 1);
 	return (dup);
 }

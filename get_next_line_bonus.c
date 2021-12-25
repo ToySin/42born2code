@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 21:09:22 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 22:01:58 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static char	*ft_get_line(char *save)
 	line = (char *)malloc(sizeof(char) * (nl_ptr - save + 2));
 	if (!line)
 		return (NULL);
-	ft_strlcpy(line, save, nl_ptr - save + 2);
+	ft_my_strlcpy(line, save, nl_ptr - save + 2);
 	return (line);
 }
 
