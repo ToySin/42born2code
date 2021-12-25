@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:35 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/24 16:25:47 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 12:59:49 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 1
 # endif
 
 # ifndef OPEN_MAX

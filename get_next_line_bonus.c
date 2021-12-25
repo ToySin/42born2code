@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/24 16:37:02 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 13:00:58 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	*ft_treat_last(char **save, char *buf, ssize_t rbyte)
 
 	free(buf);
 	remain = NULL;
-	if (!rbyte)
+	if (!rbyte && !(*save))
 		remain = ft_strdup(*save);
 	free(*save);
 	return (remain);
