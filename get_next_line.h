@@ -10,24 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 100000
 # endif
 
 # ifndef OPEN_MAX
-# define OPEN_MAX 128
+# define OPEN_MAX 65536
 # endif
 
 char	*get_next_line(int fd);
 
-size_t	ft_strlen(char *s);
 size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize);
 char	*ft_my_strchr(char *s, int c);
 char	*ft_my_strjoin(char *s1, char *s2);

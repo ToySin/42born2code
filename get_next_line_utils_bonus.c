@@ -6,21 +6,11 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 18:39:22 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 21:56:48 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-size_t	ft_strlen(char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
@@ -58,8 +48,12 @@ char	*ft_my_strjoin(char *s1, char *s2)
 
 	if (!s1)
 		return (ft_strdup(s2));
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
+	s1_len = 0;
+	while (s1[s1_len])
+		s1_len++;
+	s2_len = 0;
+	while (s2[s2_len])
+		s2_len++;
 	comb = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!comb)
 		return (NULL);
@@ -72,21 +66,16 @@ char	*ft_my_strjoin(char *s1, char *s2)
 char	*ft_strdup(char *s)
 {
 	size_t	len;
-	size_t	index;
 	char	*dup;
 
 	if (!s)
 		return (NULL);
-	len = ft_strlen(s);
+	len = 0;
+	while (s[len])
+		len++;
 	dup = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dup)
 		return (NULL);
-	index = 0;
-	while (index < len)
-	{
-		dup[index] = s[index];
-		index++;
-	}
-	dup[index] = '\0';
+	ft_strlcpy(dup, s, len + 1);
 	return (dup);
 }
