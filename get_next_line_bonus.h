@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:35 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 12:59:49 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 13:11:37 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+
+#include <stdio.h>
 
 # ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1
