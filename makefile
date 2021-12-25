@@ -14,7 +14,7 @@ NAME = test
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAG) -o -I get_next_line_bonus.h $@ $^
+	$(CC) $(CFLAG) -o $@ $^
 
 clean:
 	$(RM) $(OBJS)
