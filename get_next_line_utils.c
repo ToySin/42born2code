@@ -1,87 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 21:29:47 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/19 21:29:47 by donshin          ###   ########.fr       */
+/*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
+/*   Updated: 2021/12/25 18:39:22 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(char *s)
 {
 	size_t	len;
 
 	len = 0;
-	while (str[len])
+	while (s[len])
 		len++;
 	return (len);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
-	char	*sub_str;
-	size_t	s_len;
 	size_t	index;
 
-	if (!s)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (s_len < start)
-		return (ft_strjoin("", ""));
-	if (s_len - start < len)
-		len = s_len - start;
-	sub_str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!sub_str)
-		return (NULL);
 	index = 0;
-	while (index < len)
+	while (index + 1 < dstsize && src[index])
 	{
-		sub_str[index] = s[start + index];
+		dest[index] = src[index];
 		index++;
 	}
-	sub_str[index] = '\0';
-	return (sub_str);
+	if (dstsize)
+		dest[index] = '\0';
+	return (ft_strlen((char *)src));
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_my_strchr(char *s, int c)
 {
-	char	*joined;
-	size_t	s1_len;
-	size_t	s2_len;
-	size_t	total_len;
-
-	if (!s1 || !s2)
+	if (!s)
 		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	joined = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
-	if (!joined)
-		return (NULL);
-	total_len = 0;
-	while (total_len < s1_len)
-	{
-		joined[total_len] = s1[total_len];
-		total_len++;
-	}
-	total_len = 0;
-	while (total_len < s2_len)
-	{
-		joined[s1_len + total_len] = s2[total_len];
-		total_len++;
-	}
-	joined[s1_len + s2_len] = '\0';
-	return (joined);
-}
-
-char	*ft_strchr(char *s, int c)
-{
-	if (!c)
-		return (s + ft_strlen(s));
 	while (*s)
 	{
 		if (*s == (char)c)
@@ -89,4 +48,45 @@ char	*ft_strchr(char *s, int c)
 		s++;
 	}
 	return (NULL);
+}
+
+char	*ft_my_strjoin(char *s1, char *s2)
+{
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*comb;
+
+	if (!s1)
+		return (ft_strdup(s2));
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	comb = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!comb)
+		return (NULL);
+	ft_strlcpy(comb, s1, s1_len + 1);
+	ft_strlcpy(comb + s1_len, s2, s2_len + 1);
+	free(s1);
+	return (comb);
+}
+
+char	*ft_strdup(char *s)
+{
+	size_t	len;
+	size_t	index;
+	char	*dup;
+
+	if (!s)
+		return (NULL);
+	len = ft_strlen(s);
+	dup = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dup)
+		return (NULL);
+	index = 0;
+	while (index < len)
+	{
+		dup[index] = s[index];
+		index++;
+	}
+	dup[index] = '\0';
+	return (dup);
 }

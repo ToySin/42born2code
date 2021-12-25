@@ -6,8 +6,12 @@ int main()
 	int fd = open("test.txt", O_RDONLY);
 	char *line;
 
-	while (line = get_next_line(fd))
+	printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (!line)
+			break;
 		for (int i = 0; line[i]; i++)
 			printf(" %d", line[i]);
 		printf("\n");
