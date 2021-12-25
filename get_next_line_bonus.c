@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 13:50:28 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 13:55:08 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,10 @@ static char	*ft_treat_last(char **save, char *buf)
 	if (saved_fd)
 	{
 		if (*saved_fd == '\0')
+		{
+			free(remain);
 			remain = NULL;
+		}
 		free(*save);
 	}
 	*save = NULL;
