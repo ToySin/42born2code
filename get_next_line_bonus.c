@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 14:27:54 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 16:22:06 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,13 @@ static char	*ft_treat_last(char **save, char *buf)
 	char	*saved_fd;
 	char	*remain;
 
+	free(buf);
+	saved_fd = *save;
+	if (!saved_fd)
+		return (NULL);
 	remain = ft_strchr(*save, '\n');
 	if (remain)
 		return (ft_line_with_nl(save, buf, remain));
-	saved_fd = *save;
-	free(buf);
 	remain = ft_strdup(saved_fd);
 	if (saved_fd)
 	{
