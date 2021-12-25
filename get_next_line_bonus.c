@@ -6,91 +6,81 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 16:22:06 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 19:30:07 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*ft_string_adder(char *save, char *buf);
-static char	*ft_line_with_nl(char **save, char *buf, char *nl_ptr);
-static char	*ft_treat_last(char **save, char *buf);
+static char	*ft_string_adder(int fd, char *save);
+static char	*ft_get_line(char *save);
+static char	*ft_save_remain(char *save);
 
 char	*get_next_line(int fd)
 {
 	static char	*save[OPEN_MAX];
-	ssize_t		rbyte;
-	char		*buf;
-	char		*nl_ptr;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
+	save[fd] = ft_string_adder(fd, save[fd]);
+	if (!save[fd])
+		return (NULL);
+	line = ft_get_line(save[fd]);
+	save[fd] = ft_save_remain(save[fd]);
+	return (line);
+}
+
+static char	*ft_string_adder(int fd, char *save)
+{
+	ssize_t	rbyte;
+	char	*buf;
+
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
 	rbyte = read(fd, buf, BUFFER_SIZE);
-	while (rbyte > 0)
+	while (rbyte > 0 && !ft_my_strchr(save, '\n'))
 	{
 		buf[rbyte] = '\0';
-		save[fd] = ft_string_adder(save[fd], buf);
-		nl_ptr = ft_strchr(save[fd], '\n');
-		if (nl_ptr)
-			return (ft_line_with_nl(&save[fd], buf, nl_ptr));
+		save = ft_my_strjoin(save, buf);
 		rbyte = read(fd, buf, BUFFER_SIZE);
 	}
-	return (ft_treat_last(&save[fd], buf));
+	free(buf);
+	if (rbyte == -1)
+		return (NULL);
+	return (save);
 }
 
-static char	*ft_string_adder(char *save, char *buf)
-{
-	char	*comb;
-
-	if (!save)
-		comb = ft_strdup(buf);
-	else
-		comb = ft_strjoin(save, buf);
-	free(save);
-	return (comb);
-}
-
-static char *ft_line_with_nl(char **save, char *buf, char *nl_ptr)
+static char	*ft_get_line(char *save)
 {
 	char	*line;
-	char	*tmp;
+	char	*nl_ptr;
 
-	free(buf);
-	line = (char *)malloc(sizeof(char) * (nl_ptr - *save + 2));
+	if (*save == '\0')
+		return (NULL);
+	nl_ptr = ft_my_strchr(save, '\n');
+	if (!nl_ptr)
+		return (ft_strdup(save));
+	line = (char *)malloc(sizeof(char) * (nl_ptr - save + 2));
 	if (!line)
 		return (NULL);
-	ft_strlcpy(line, *save, nl_ptr - *save + 2);
-	tmp = ft_strdup(nl_ptr + 1);
-	free(*save);
-	*save = tmp;
+	ft_strlcpy(line, save, nl_ptr - save + 2);
 	return (line);
 }
 
-static char	*ft_treat_last(char **save, char *buf)
+static char	*ft_save_remain(char *save)
 {
-	char	*saved_fd;
-	char	*remain;
+	char	*line;
+	char	*nl_ptr;
 
-	free(buf);
-	saved_fd = *save;
-	if (!saved_fd)
-		return (NULL);
-	remain = ft_strchr(*save, '\n');
-	if (remain)
-		return (ft_line_with_nl(save, buf, remain));
-	remain = ft_strdup(saved_fd);
-	if (saved_fd)
+	nl_ptr = ft_my_strchr(save, '\n');
+	if (!nl_ptr)
 	{
-		if (*saved_fd == '\0')
-		{
-			free(remain);
-			remain = NULL;
-		}
-		free(*save);
+		free(save);
+		return (NULL);
 	}
-	*save = NULL;
-	return (remain);
+	line = ft_strdup(nl_ptr + 1);
+	free(save);
+	return (line);
 }
