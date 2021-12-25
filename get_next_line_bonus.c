@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 13:39:50 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 13:41:25 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*get_next_line(int fd)
 			return (ft_line_with_nl(&save[fd], buf, nl_ptr));
 		rbyte = read(fd, buf, BUFFER_SIZE);
 	}
-	return (ft_treat_last(&save[fd], buf, rbyte));
+	return (ft_treat_last(&save[fd], buf));
 }
 
 static char	*ft_string_adder(char *save, char *buf)
