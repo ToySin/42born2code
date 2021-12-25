@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/24 16:37:48 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 18:39:22 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 	return (ft_strlen((char *)src));
 }
 
-char	*ft_strchr(char *s, int c)
+char	*ft_my_strchr(char *s, int c)
 {
+	if (!s)
+		return (NULL);
 	while (*s)
 	{
 		if (*s == (char)c)
@@ -48,14 +50,14 @@ char	*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_my_strjoin(char *s1, char *s2)
 {
 	size_t	s1_len;
 	size_t	s2_len;
 	char	*comb;
 
-	if (!s1 || !s2)
-		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
 	comb = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
@@ -63,6 +65,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	ft_strlcpy(comb, s1, s1_len + 1);
 	ft_strlcpy(comb + s1_len, s2, s2_len + 1);
+	free(s1);
 	return (comb);
 }
 
