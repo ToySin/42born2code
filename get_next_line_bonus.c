@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 13:38:31 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 13:39:50 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*ft_string_adder(char *save, char *buf);
 static char	*ft_line_with_nl(char **save, char *buf, char *nl_ptr);
-static char	*ft_treat_last(char **save, char *buf, ssize_t rbyte);
+static char	*ft_treat_last(char **save, char *buf);
 
 char	*get_next_line(int fd)
 {
