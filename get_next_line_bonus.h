@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:35 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 22:21:53 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 22:29:38 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char	*get_next_line(int fd);
 char	*ft_my_strchr(char *s, int c);
 char	*ft_my_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *s);
+t_save	*ft_my_lstnew(int fd);
 void	ft_my_lstdelone(t_save *lst);
 
 #endif

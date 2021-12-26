@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 22:19:47 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 22:30:51 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ char	*get_next_line(int fd)
 	fd_node = ft_find_fd(&lst_header, fd);
 	fd_node->save = ft_string_adder(fd, fd_node->save);
 	if (!fd_node->save)
+	{
+		ft_my_lstdelone(fd_node);
 		return (NULL);
+	}
 	line = ft_get_line(fd_node->save);
 	fd_node->save = ft_save_remain(fd_node->save);
 	if (!line)
@@ -38,7 +41,21 @@ char	*get_next_line(int fd)
 
 static t_save	*ft_find_fd(t_save *header, int fd)
 {
+	t_save	*target;
 
+	target = header->next;
+	while (target)
+	{
+		if (target->fd == fd)
+			return (target);
+		target = target->next;
+	}
+	target = ft_my_lstnew(fd);
+	header->next->prev = target;
+	target->next = header->next
+	header->next = target;
+	target->prev = header;
+	return (target);
 }
 
 static char	*ft_string_adder(int fd, char *save)
