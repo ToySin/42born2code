@@ -20,10 +20,6 @@
 #  define BUFFER_SIZE 100000
 # endif
 
-# ifndef OPEN_MAX
-#  define OPEN_MAX 65536
-# endif
-
 char	*get_next_line(int fd);
 
 void	ft_my_strlcpy(char *dest, const char *src, size_t dstsize);

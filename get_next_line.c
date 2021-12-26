@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 15:08:04 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 15:52:45 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static char	*ft_save_remain(char *save);
 
 char	*get_next_line(int fd)
 {
-	static char	*save[OPEN_MAX];
+	static char	*save[65536];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || fd >= 65536 || BUFFER_SIZE < 1)
 		return (NULL);
 	save[fd] = ft_string_adder(fd, save[fd]);
 	if (!save[fd])
