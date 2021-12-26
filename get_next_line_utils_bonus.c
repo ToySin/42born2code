@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 23:04:45 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/27 01:24:55 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ char	*ft_strdup(char *s)
 void	ft_my_lstdelone(t_save *lst)
 {
 	lst->prev->next = lst->next;
-	if (lst->next)
-		lst->next->prev = lst->prev;
+	lst->next->prev = lst->prev;
 	free(lst);
 }

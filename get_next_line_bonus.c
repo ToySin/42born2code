@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 22:55:12 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/27 01:24:26 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ static char		*ft_save_remain(char *save);
 char	*get_next_line(int fd)
 {
 	static t_save	lst_header;
+	static t_save	lst_trailer;
 	t_save			*fd_node;
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
+	lst_header.next = &lst_trailer;
+	lst_trailer.prev = &lst_header;
 	fd_node = ft_find_fd(&lst_header, fd);
 	if (!fd_node)
 		return (NULL);
@@ -59,8 +62,7 @@ static t_save	*ft_find_fd(t_save *header, int fd)
 	target->save = NULL;
 	target->prev = header;
 	target->next = header->next;
-	if (header->next)
-		header->next->prev = target;
+	header->next->prev = target;
 	header->next = target;
 	return (target);
 }
