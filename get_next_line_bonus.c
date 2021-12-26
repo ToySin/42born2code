@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 22:48:04 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 22:55:12 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ static t_save	*ft_find_fd(t_save *header, int fd)
 		return (NULL);
 	target->fd = fd;
 	target->save = NULL;
+	target->prev = header;
+	target->next = header->next;
 	if (header->next)
 		header->next->prev = target;
-	target->next = header->next;
 	header->next = target;
-	target->prev = header;
 	return (target);
 }
 
