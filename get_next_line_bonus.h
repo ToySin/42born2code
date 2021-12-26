@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:35 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 22:44:55 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 23:39:07 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000
-# endif
 
 typedef struct s_save
 {

@@ -16,10 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000
-# endif
-
 char	*get_next_line(int fd);
 
 void	ft_my_strlcpy(char *dest, const char *src, size_t dstsize);
