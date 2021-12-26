@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 22:51:14 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 23:04:45 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 void	ft_my_strlcpy(char *dest, const char *src, size_t dstsize)
 {
-	while (dstsize && *src)
-		*(dest++) = *(src++);
+	size_t	index;
+
+	index = 0;
+	while (index + 1 < dstsize && src[index])
+	{
+		dest[index] = src[index];
+		index++;
+	}
 	if (dstsize)
-		*dest = '\0';
+		dest[index] = '\0';
 }
 
 char	*ft_my_strchr(char *s, int c)
