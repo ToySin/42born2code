@@ -6,11 +6,25 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 22:30:41 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 22:38:36 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
+void	ft_my_strlcpy(char *dest, const char *src, size_t dstsize)
+{
+	size_t	index;
+
+	index = 0;
+	while (index + 1 < dstsize && src[index])
+	{
+		dest[index] = src[index];
+		index++;
+	}
+	if (dstsize)
+		dest[index] = '\0';
+}
 
 char	*ft_my_strchr(char *s, int c)
 {
@@ -63,20 +77,6 @@ char	*ft_strdup(char *s)
 		return (NULL);
 	ft_my_strlcpy(dup, s, len + 1);
 	return (dup);
-}
-
-t_save	*ft_my_lstnew(int fd)
-{
-	t_save	*node;
-
-	node = (t_save *)malloc(sizeof(t_save));
-	if (!node)
-		return (NULL);
-	node->fd = fd;
-	node->save = NULL;
-	node->next = NULL;
-	node->prev = NULL;
-	return (node);
 }
 
 void	ft_my_lstdelone(t_save *lst)

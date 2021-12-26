@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 22:30:51 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 22:40:25 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,13 @@ static t_save	*ft_find_fd(t_save *header, int fd)
 			return (target);
 		target = target->next;
 	}
-	target = ft_my_lstnew(fd);
+	target = (t_save *)malloc(sizeof(t_save));
+	if (!target)
+		return (NULL);
+	target->fd = fd;
+	target->save = NULL;
 	header->next->prev = target;
-	target->next = header->next
+	target->next = header->next;
 	header->next = target;
 	target->prev = header;
 	return (target);
@@ -83,7 +87,6 @@ static char	*ft_string_adder(int fd, char *save)
 
 static char	*ft_get_line(char *save)
 {
-	size_t	index;
 	char	*line;
 	char	*nl_ptr;
 
@@ -95,13 +98,7 @@ static char	*ft_get_line(char *save)
 	line = (char *)malloc(sizeof(char) * (nl_ptr - save + 2));
 	if (!line)
 		return (NULL);
-	index = 0;
-	while (index < nl_ptr - save + 1)
-	{
-		line[index] = save[index];
-		index++;
-	}
-	line[index] = '\0';
+	ft_my_strlcpy(line, save, nl_ptr - save + 2);
 	return (line);
 }
 
