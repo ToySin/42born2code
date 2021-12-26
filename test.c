@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 22:23:10 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 22:24:56 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 13:35:34 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(void)
 	int		i;
 
 	fd = open("test.txt", O_RDONLY);
+	fd = 0;
 	printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
 	while (1)
 	{
