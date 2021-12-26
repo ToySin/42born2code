@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 22:44:27 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 22:48:04 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	lst_header.next = NULL;
 	fd_node = ft_find_fd(&lst_header, fd);
+	if (!fd_node)
+		return (NULL);
 	fd_node->save = ft_string_adder(fd, fd_node->save);
 	if (!fd_node->save)
 	{
