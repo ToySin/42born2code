@@ -6,11 +6,11 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 18:32:09 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 18:34:02 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 static char	*ft_string_adder(int fd, char *save);
 static char	*ft_get_line(char *save);
