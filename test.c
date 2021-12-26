@@ -6,12 +6,13 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 22:23:10 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 13:35:34 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 15:42:43 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 #include <stdio.h>
+#include <fcntl.h>
 
 int	main(void)
 {

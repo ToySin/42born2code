@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:35 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 22:22:51 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 15:44:00 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
-# include <fcntl.h>
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
