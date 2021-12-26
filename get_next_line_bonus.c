@@ -6,29 +6,39 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 18:08:07 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 22:19:47 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*ft_string_adder(int fd, char *save);
-static char	*ft_get_line(char *save);
-static char	*ft_save_remain(char *save);
+static t_save	*ft_find_fd(t_save *header, int fd);
+static char		*ft_string_adder(int fd, char *save);
+static char		*ft_get_line(char *save);
+static char		*ft_save_remain(char *save);
 
 char	*get_next_line(int fd)
 {
-	static char	*save[65536];
-	char		*line;
+	static t_save	lst_header;
+	t_save			*fd_node;
+	char			*line;
 
-	if (fd < 0 || fd >= 65536 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	save[fd] = ft_string_adder(fd, save[fd]);
-	if (!save[fd])
+	fd_node = ft_find_fd(&lst_header, fd);
+	fd_node->save = ft_string_adder(fd, fd_node->save);
+	if (!fd_node->save)
 		return (NULL);
-	line = ft_get_line(save[fd]);
-	save[fd] = ft_save_remain(save[fd]);
+	line = ft_get_line(fd_node->save);
+	fd_node->save = ft_save_remain(fd_node->save);
+	if (!line)
+		ft_my_lstdelone(fd_node);
 	return (line);
+}
+
+static t_save	*ft_find_fd(t_save *header, int fd)
+{
+
 }
 
 static char	*ft_string_adder(int fd, char *save)
@@ -56,6 +66,7 @@ static char	*ft_string_adder(int fd, char *save)
 
 static char	*ft_get_line(char *save)
 {
+	size_t	index;
 	char	*line;
 	char	*nl_ptr;
 
@@ -67,7 +78,13 @@ static char	*ft_get_line(char *save)
 	line = (char *)malloc(sizeof(char) * (nl_ptr - save + 2));
 	if (!line)
 		return (NULL);
-	ft_my_strlcpy(line, save, nl_ptr - save + 2);
+	index = 0;
+	while (index < nl_ptr - save + 1)
+	{
+		line[index] = save[index];
+		index++;
+	}
+	line[index] = '\0';
 	return (line);
 }
 
