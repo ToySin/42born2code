@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 22:23:10 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 15:42:43 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/26 22:51:55 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(void)
 		while (line[i])
 			printf(" %d", line[i++]);
 		printf("\n");
+		printf("%s", line);
 	}
 	printf("This line is attached end of line\n");
 	return (0);
