@@ -6,11 +6,11 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/27 01:33:56 by donshin          ###   ########.fr       */
+/*   Updated: 2021/12/25 18:39:22 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 void	ft_my_strlcpy(char *dest, const char *src, size_t dstsize)
 {
@@ -77,12 +77,4 @@ char	*ft_strdup(char *s)
 		return (NULL);
 	ft_my_strlcpy(dup, s, len + 1);
 	return (dup);
-}
-
-void	ft_my_lstdelone(t_save *lst)
-{
-	lst->prev->next = lst->next;
-	if (lst->next)
-		lst->next->prev = lst->prev;
-	free(lst);
 }
