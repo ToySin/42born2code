@@ -1,5 +1,7 @@
 # 42born2code
 
+[![donshin's 42 stats](https://badge42.herokuapp.com/api/stats/donshin)](https://github.com/JaeSeoKim/badge42)
+
  |Order|Circle|Project|Stack|Status|Score|Details|
  |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
  |01|00|[Libft](https://github.com/ToySin/42born2code/tree/main/libft)|C|finished|[![donshin](https://badge42.herokuapp.com/api/project/donshin/Libft)](https://github.com/JaeSeoKim/badge42)|[Notion](https://south-quokka-5fd.notion.site/LIBFT-27e1fc2a88c545eba8167350a80d790b)|
