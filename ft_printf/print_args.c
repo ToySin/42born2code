@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 15:04:52 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/31 23:29:55 by donshin          ###   ########.fr       */
+/*   Created: 2021/12/31 23:37:02 by donshin           #+#    #+#             */
+/*   Updated: 2021/12/31 23:45:02 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include "libft/libft.h"
-
-typedef struct s_type_info
+int	print_args(t_type_info *info, va_list ap)
 {
-	char	*type;
-}			t_type_info;
+	if (info->type == 'c')
 
-int	ft_printf(const char *format, ...);
+	else if (info->type == 's')
 
-int	manage_conv(const char *format, va_list ap);
-int	decode_type(t_type_info *info, const char *format);
-int	print_args(t_type_info *info, va_list ap);
+	else if (info->type == 'd')
 
-int
+	else if (info->type == 'i')
 
-#endif
+	else if (info->type == 'u')
+
+	else if (info->type == 'x')
+
+	else if (info->type == 'X')
+
+	else if (info->type == '%')
+
+}

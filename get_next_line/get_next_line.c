@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/26 18:37:13 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/01 02:08:07 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static char	*ft_string_adder(int fd, char *save)
 			break ;
 		buf[rbyte] = '\0';
 		save = ft_my_strjoin(save, buf);
+		if (!save)
+			break ;
 	}
 	free(buf);
 	if (rbyte == -1)
