@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/25 18:39:22 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/01 13:51:37 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ char	*ft_my_strjoin(char *s1, char *s2)
 		s2_len++;
 	comb = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!comb)
+	{
+		free(s1);
 		return (NULL);
+	}
 	ft_my_strlcpy(comb, s1, s1_len + 1);
 	ft_my_strlcpy(comb + s1_len, s2, s2_len + 1);
 	free(s1);
