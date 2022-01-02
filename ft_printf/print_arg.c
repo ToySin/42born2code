@@ -1,46 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_arg.c                                      :+:      :+:    :+:   */
+/*   print_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 23:28:12 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/02 23:44:29 by donshin          ###   ########.fr       */
+/*   Created: 2022/01/02 23:55:28 by donshin           #+#    #+#             */
+/*   Updated: 2022/01/03 00:05:47 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	convert_arg(t_info *info, va_list ap)
+void	print_arg(t_info *info, va_list ap, int *byte)
 {
 	char type;
 
 	type = info->type;
-
 	if (ft_strcmp("c", type))
-		convert_char(info, va_arg(ap, int));
+		print_char(info, (char)va_arg(ap, int), byte);
 	else if (ft_strcmp("s", type))
-		convert_stype(info, va_arg(ap, char *));
+		print_string(info, va_arg(ap, char *), byte);
 	else if (ft_strcmp("p", type))
-	{
-		convert_
-	}
+		print_nbr(info, va_arg(ap, unsigned long), byte);
 	else if (ft_strchr("di", type))
-	{
-
-	}
-	else if (ft_strcmp("u", type))
-	{
-
-	}
-	else if (ft_strchr("xX", type))
-	{
-
-	}
+		print_nbr(info, va_arg(ap, int), byte);
+	else if (ft_strcmp("uxX", type))
+		print_nbr(info, va_arg(ap, unsigned int), byte);
 	else if (ft_strcmp("%", type))
-	{
-		info->converted_str = ft_strdup("%");
-		info->arg_len = 1;
-	}
+		print_char(info, '%', byte);
 }

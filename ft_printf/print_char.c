@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_string.c                                   :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 23:43:02 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/02 23:48:02 by donshin          ###   ########.fr       */
+/*   Created: 2022/01/03 00:02:32 by donshin           #+#    #+#             */
+/*   Updated: 2022/01/03 00:05:22 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	convert_string(t_info *info, char *s)
+void	print_char(t_info *info, char c, int *byte)
 {
-	t_info
+	byte += (int)write(1, &c, 1);
 }
