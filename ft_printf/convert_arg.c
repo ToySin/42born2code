@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_c.c                                          :+:      :+:    :+:   */
+/*   convert_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 17:04:05 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/01 17:05:41 by donshin          ###   ########.fr       */
+/*   Created: 2022/01/02 23:28:12 by donshin           #+#    #+#             */
+/*   Updated: 2022/01/02 23:28:48 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_c(va_list ap)
+void	convert_arg(t_info *info, va_list ap)
 {
-	return (write(1, va_arg(ap, int), 1));
+
 }
