@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_conversion.c                                 :+:      :+:    :+:   */
+/*   print_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 15:32:01 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/02 23:47:46 by donshin          ###   ########.fr       */
+/*   Created: 2022/01/02 23:45:48 by donshin           #+#    #+#             */
+/*   Updated: 2022/01/02 23:47:24 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	parse_conversion(const char **format, va_list ap, int *byte)
+void	print_arg(t_info *info, int *byte)
 {
-	t_info		info;
-
-	decode_conversion(format, &info);
-	convert_arg(&info, ap);
-	print_arg(&info, byte);
+	byte += write(1, info->converted_str, info->arg_len);
+	free(info->converted_str)
 }
