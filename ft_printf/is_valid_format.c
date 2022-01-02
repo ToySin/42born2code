@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   is_valid_format.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 14:59:43 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/01 19:05:07 by donshin          ###   ########.fr       */
+/*   Created: 2022/01/01 18:52:56 by donshin           #+#    #+#             */
+/*   Updated: 2022/01/01 19:27:46 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	is_valid_format(const char *format)
 {
-	va_list	ap;
-	int		print_byte;
-
-	if (!is_valid_format(format))
-		return (-1);
-	va_start(ap, format);
-	print_byte = 0;
 	while (*format)
 	{
-		if (*format == '%')
-			parse_conversion(&format, ap, &print_byte);
-		else
-		{
-			ft_putchar_fd(*format, 1);
-			print_byte++;
-			format++;
-		}
+		if (ft_strcmp("%", *format))
+			if (!ft_strchr("cspdiuxX%", *(++format)))
+				return (0);
+		format++;
 	}
-	va_end(ap);
-	return (print_byte);
+	return (1);
 }
+
+// #include <stdio.h>
+
+// int main() {
+// 	printf("%d", is_valid_format("%c%s%p%d%%%u%i%x%X"));
+// 	printf("%d", is_valid_format("%c%s%p%d%%%u%i%y%X"));
+// }
+
+// gcc is_valid_format.c libft/ft_strchr.c libft/ft_strlen.c
+
+// check done

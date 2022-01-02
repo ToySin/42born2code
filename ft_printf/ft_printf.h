@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 15:04:52 by donshin           #+#    #+#             */
-/*   Updated: 2021/12/31 23:29:55 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/02 14:38:43 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,27 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-typedef struct s_type_info
-{
-	char	*type;
-}			t_type_info;
+int		ft_printf(const char *format, ...);
+int		is_valid_format(const char *format);
+void	parse_conversion(const char **format, va_list ap, int *byte);
 
-int	ft_printf(const char *format, ...);
+void	print_args(va_list ap, char type, int *byte;);
 
-int	manage_conv(const char *format, va_list ap);
-int	decode_type(t_type_info *info, const char *format);
-int	print_args(t_type_info *info, va_list ap);
+void	print_char(int c, int *byte);
+void	print_string(char *s, int *byte);
+void	print_int(int nbr, int *byte);
+void	print_unsigned_int(unsigned int nbr, int *byte);
+void	print_pointer(void *ptr, int *byte);
 
-int
+int	print_c(char *c);
+int	print_s(char *s);
+int	print_p(unsigned long *ptr);
+int	print_d(int integer);
+int	print_i(int integer);
+int	print_u(unsigned int u_integer);
+int	print_x(va_list ap);
+int	print_X(va_list ap);
+
+
 
 #endif

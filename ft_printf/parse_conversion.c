@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   parse_conversion.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 14:59:43 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/01 19:05:07 by donshin          ###   ########.fr       */
+/*   Created: 2021/12/30 15:32:01 by donshin           #+#    #+#             */
+/*   Updated: 2022/01/01 19:29:30 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+void	parse_conversion(const char **format, va_list ap, int *byte)
 {
-	va_list	ap;
-	int		print_byte;
+	const char	*format_ptr;
+	char		type;
 
-	if (!is_valid_format(format))
-		return (-1);
-	va_start(ap, format);
-	print_byte = 0;
-	while (*format)
-	{
-		if (*format == '%')
-			parse_conversion(&format, ap, &print_byte);
-		else
-		{
-			ft_putchar_fd(*format, 1);
-			print_byte++;
-			format++;
-		}
-	}
-	va_end(ap);
-	return (print_byte);
+	format_ptr = *(++format);
+	type = *format_ptr++;
+	print_args(ap, type, byte);
+	*format = format_ptr;
 }
