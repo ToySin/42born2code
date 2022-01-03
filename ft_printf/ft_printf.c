@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:59:43 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 14:59:37 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/03 15:26:57 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	int		print_byte;
 
+	printf("pass");
 	if (!is_valid_format(format))
 		return (-1);
 	va_start(ap, format);

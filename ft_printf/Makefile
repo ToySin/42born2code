@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:38:58 by donshin           #+#    #+#              #
-#    Updated: 2022/01/03 15:13:59 by donshin          ###   ########.fr        #
+#    Updated: 2022/01/03 15:25:50 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,10 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+
+test:
+	$(CC) -Wall -Wextra -Werror test.c $(SRCS) libft/*.c
 
 .PHONY: all clean fclean re
 
