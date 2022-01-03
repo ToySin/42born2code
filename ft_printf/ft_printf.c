@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:59:43 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 15:32:46 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/03 16:50:15 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_printf(const char *format, ...)
 {
-	printf("pass");
 	va_list	ap;
 	int		print_byte;
 
