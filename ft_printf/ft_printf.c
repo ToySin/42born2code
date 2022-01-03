@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 14:59:43 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/02 23:14:16 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/03 13:55:10 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	ft_printf(const char *format, ...)
 			parse_conversion(&format, ap, &print_byte);
 		else
 		{
-			ft_putchar_fd(*format, 1);
-			print_byte++;
+			print_char(*format, &print_byte);
 			format++;
 		}
 	}

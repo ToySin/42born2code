@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 15:32:01 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/02 23:59:05 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/03 13:57:19 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	parse_conversion(const char **format, va_list ap, int *byte)
 {
-	t_info		info;
+	char	*format_ptr;
 
-	decode_conversion(format, &info);
-	print_arg(&info, ap, byte);
+	format_ptr = *(++format);
+	print_arg(&info, ap, *(format_ptr++));
+	*format = format_ptr;
 }

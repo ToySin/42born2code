@@ -6,13 +6,13 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 00:02:32 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 00:05:22 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/03 13:52:29 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_char(t_info *info, char c, int *byte)
+void	print_char(char c, int *byte)
 {
 	byte += (int)write(1, &c, 1);
 }

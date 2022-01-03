@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   decode_conversion.c                                :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 23:15:24 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/02 23:24:31 by donshin          ###   ########.fr       */
+/*   Created: 2022/01/03 12:03:21 by donshin           #+#    #+#             */
+/*   Updated: 2022/01/03 13:51:25 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// decode conversion flag and type
-// move format pointer in ft_printf function next to conversion
-
-void	decode_conversion(const char **format, t_info *info)
+void	print_string(char *s, int *byte)
 {
-	char	*format_ptr;
-
-	format_ptr = *(++format);
-	info->type = *(format_ptr++);
-	*format = format_ptr;
+	if (!s)
+		byte += (int)write(1, "(null)", 6);
+	else
+		byte += (int)write(1, s, ft_strlen(s));
 }
