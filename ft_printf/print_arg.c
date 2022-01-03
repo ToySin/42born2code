@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 23:55:28 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 13:58:29 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/03 14:51:50 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	print_arg(char type, va_list ap, int *byte)
 {
-	if (ft_strcmp("c", type))
+	if (ft_strchr("c", type))
 		print_char((char)va_arg(ap, int), byte);
-	else if (ft_strcmp("s", type))
+	else if (ft_strchr("s", type))
 		print_string(va_arg(ap, char *), byte);
-	else if (ft_strcmp("p", type))
+	else if (ft_strchr("p", type))
 		print_nbr(type, va_arg(ap, unsigned long), byte);
 	else if (ft_strchr("di", type))
 		print_nbr(type, va_arg(ap, int), byte);
-	else if (ft_strcmp("uxX", type))
+	else if (ft_strchr("uxX", type))
 		print_nbr(type, va_arg(ap, unsigned int), byte);
-	else if (ft_strcmp("%", type))
+	else if (ft_strchr("%", type))
 		print_char('%', byte);
 }

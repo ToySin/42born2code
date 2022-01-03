@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 13:03:05 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 13:50:52 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/03 14:52:56 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	print_nbr(char type, unsigned long nbr, int *byte)
 			byte += (int)write(1, "-", 1);
 		rprint_nbr_base((unsigned int)(-(int)nbr), "0123456789", 10, byte);
 	}
-	else if (ft_strcmp("u", type))
+	else if (ft_strchr("u", type))
 		rprint_nbr_base((unsigned int)nbr, "0123456789", 10, byte);
-	else if (ft_strcmp("x", type))
+	else if (ft_strchr("x", type))
 		rprint_nbr_base((unsigned int)nbr, "0123456789abcdef", 16, byte);
-	else if (ft_strcmp("X", type))
+	else if (ft_strchr("X", type))
 		rprint_nbr_base((unsigned int)nbr, "0123456789ABCDEF", 16, byte);
-	else if (ft_strcmp("p", type))
+	else if (ft_strchr("p", type))
 	{
 		byte += (int)write(1, "0x", 2);
-		rprint_nbr_base(nbr. "0123456789abcdef", 16, byte);
+		rprint_nbr_base(nbr, "0123456789abcdef", 16, byte);
 	}
 }
 
@@ -39,5 +39,5 @@ static void	rprint_nbr_base(unsigned long nbr, char *base, int rdx, int *byte)
 {
 	if (nbr / rdx)
 		rprint_nbr_base(nbr / rdx, base, rdx, byte);
-	byte += (int)write(1, &base[nbr % radix], 1);
+	byte += (int)write(1, &base[nbr % rdx], 1);
 }

@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 15:04:52 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 13:57:35 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/03 14:59:45 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_info
 int		ft_printf(const char *format, ...);
 int		is_valid_format(const char *format);
 
-void	parse_conversion(const char **format, va_list ap, int byte);
-void	print_arg(t_info *info, va_list ap, int *byte);
+void	parse_conversion(const char **format, va_list ap, int *byte);
+void	print_arg(char type, va_list ap, int *byte);
 
 void	print_char(char c, int *byte);
 void	print_string(char *s, int *byte);

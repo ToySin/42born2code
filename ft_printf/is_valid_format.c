@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 18:52:56 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/02 23:25:48 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/03 14:57:12 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	is_valid_format(const char *format)
 {
 	while (*format)
 	{
-		if (ft_strcmp("%", *format))
+		if (ft_strchr("%", *format))
 			if (!ft_strchr("cspdiuxX%", *format))
 				return (0);
 		format++;
