@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 18:52:56 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 14:57:12 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/03 15:38:50 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int	is_valid_format(const char *format)
 {
+	if (!format)
+		return (0);
 	while (*format)
 	{
 		if (ft_strchr("%", *format))
-			if (!ft_strchr("cspdiuxX%", *format))
+			if (!ft_strchr("cspdiuxX%", *(++format)))
 				return (0);
 		format++;
 	}
