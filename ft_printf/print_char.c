@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 00:02:32 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 16:41:27 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/04 17:16:38 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	print_char(char c, int *byte)
 {
-	byte += (int)write(1, &c, 1);
+	*byte += (int)write(1, &c, 1);
 }
