@@ -17,5 +17,15 @@ int main() {
 	// prr('s', "Hello world!");
 
 	// printf("%d", (int)write(1, "main", 4));
-	ft_printf("a%%");
+	int n;
+
+	n = ft_printf(" %% \n");
+	n += ft_printf(" %% %% \n");
+	n += ft_printf(" %% %%%%\n");
+	n += ft_printf("%d\n", 5000);
+	n += ft_printf("%s", "Hello boy\n");
+	n += ft_printf("%c\n", 'a');
+	n += ft_printf("%p\n", &n);
+	ft_printf("%d", n);
+	printf("%p\n", &n);
 }
