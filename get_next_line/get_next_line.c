@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/06 14:32:23 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/06 14:57:19 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*ft_string_adder(int fd, char *save);
 static char	*ft_get_line(char *save);
-static char	*ft_save_remain(char *save);
+static char	*ft_save_remain(char *save, char **print_line);
 
 char	*get_next_line(int fd)
 {
@@ -33,7 +33,7 @@ char	*get_next_line(int fd)
 		save = NULL;
 	}
 	else
-		save = ft_save_remain(save);
+		save = ft_save_remain(save, &line);
 	return (line);
 }
 
@@ -79,7 +79,7 @@ static char	*ft_get_line(char *save)
 	return (line);
 }
 
-static char	*ft_save_remain(char *save)
+static char	*ft_save_remain(char *save, char **print_line)
 {
 	char	*line;
 	char	*nl_ptr;
@@ -90,7 +90,12 @@ static char	*ft_save_remain(char *save)
 		free(save);
 		return (NULL);
 	}
-	free(save);
 	line = ft_strdup(nl_ptr + 1);
+	if (!line)
+	{
+		free(*print_line);
+		*print_line = NULL;
+	}
+	free(save);
 	return (line);
 }
