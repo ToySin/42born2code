@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/06 14:57:19 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/06 15:09:55 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ static char	*ft_string_adder(int fd, char *save)
 
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
+	{
+		if (save)
+			free(save);
 		return (NULL);
+	}
 	rbyte = fd + 1;
 	while (rbyte > 0 && !ft_my_strchr(save, '\n'))
 	{
