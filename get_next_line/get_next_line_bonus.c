@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/06 14:30:02 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/06 15:12:13 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_save	*ft_find_fd(t_save *header, int fd);
 static char		*ft_string_adder(int fd, char *save);
 static char		*ft_get_line(char *save);
-static char		*ft_save_remain(char *save);
+static char		*ft_save_remain(char *save, char **print_line);
 
 char	*get_next_line(int fd)
 {
@@ -41,7 +41,7 @@ char	*get_next_line(int fd)
 		ft_my_lstdelone(fd_node);
 	}
 	else
-		fd_node->save = ft_save_remain(fd_node->save);
+		fd_node->save = ft_save_remain(fd_node->save, &line);
 	return (line);
 }
 
@@ -76,7 +76,11 @@ static char	*ft_string_adder(int fd, char *save)
 
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
+	{
+		if (save)
+			free(save);
 		return (NULL);
+	}
 	rbyte = fd + 1;
 	while (rbyte > 0 && !ft_my_strchr(save, '\n'))
 	{
@@ -111,7 +115,7 @@ static char	*ft_get_line(char *save)
 	return (line);
 }
 
-static char	*ft_save_remain(char *save)
+static char	*ft_save_remain(char *save, char **print_line)
 {
 	char	*line;
 	char	*nl_ptr;
@@ -123,6 +127,11 @@ static char	*ft_save_remain(char *save)
 		return (NULL);
 	}
 	line = ft_strdup(nl_ptr + 1);
+	if (!line)
+	{
+		free(*print_line);
+		*print_line = NULL;
+	}
 	free(save);
 	return (line);
 }
