@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/06 14:26:25 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/06 14:32:23 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static char	*ft_save_remain(char *save)
 		free(save);
 		return (NULL);
 	}
-	line = ft_strdup(nl_ptr + 1);
 	free(save);
+	line = ft_strdup(nl_ptr + 1);
 	return (line);
 }
