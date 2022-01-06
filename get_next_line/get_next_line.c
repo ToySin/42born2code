@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/06 14:08:31 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/06 14:26:25 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_get_line(save);
 	if (!line)
+	{
 		free(save);
+		save = NULL;
+	}
 	else
 		save = ft_save_remain(save);
 	return (line);
