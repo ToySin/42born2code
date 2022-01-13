@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 15:04:52 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 16:50:18 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/13 11:03:53 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stdarg.h>
 # include "libft/libft.h"
-
-#include <stdio.h>
 
 int		ft_printf(const char *format, ...);
 int		is_valid_format(const char *format);

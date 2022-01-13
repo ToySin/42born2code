@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 13:03:05 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/04 17:34:07 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/13 11:16:50 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	print_nbr(char type, unsigned long nbr, int *byte)
 {
 	if (ft_strchr("di", type))
 	{
-		if ((int)nbr < 0) {
+		if ((int)nbr < 0)
+		{
 			*byte += (int)write(1, "-", 1);
-			nbr = (unsigned int)-(int)nbr;
+			nbr = (unsigned int) -(int)nbr;
 		}
 		rprint_nbr_base((unsigned int)(int)nbr, "0123456789", 10, byte);
 	}

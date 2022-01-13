@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 23:55:28 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 16:45:44 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/13 11:13:03 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	print_arg(char type, va_list ap, int *byte)
 	else if (ft_strchr("uxX", type))
 		print_nbr(type, va_arg(ap, unsigned int), byte);
 	else if (ft_strchr("%", type))
-		print_char((char)'%', byte);
+		print_char('%', byte);
 }

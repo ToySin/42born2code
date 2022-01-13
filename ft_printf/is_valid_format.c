@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 18:52:56 by donshin           #+#    #+#             */
-/*   Updated: 2022/01/03 15:38:50 by donshin          ###   ########.fr       */
+/*   Updated: 2022/01/13 13:07:40 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,3 @@ int	is_valid_format(const char *format)
 	}
 	return (1);
 }
-
-// #include <stdio.h>
-
-// int main() {
-// 	printf("%d", is_valid_format("%c%s%p%d%%%u%i%x%X"));
-// 	printf("%d", is_valid_format("%c%s%p%d%%%u%i%y%X"));
-// }
-
-// gcc is_valid_format.c libft/ft_strchr.c libft/ft_strlen.c
-
-// check done
