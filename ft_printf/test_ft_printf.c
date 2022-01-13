@@ -1,78 +1,88 @@
 #include "ft_printf.h"
 #include <limits.h>
 
-int	main(void)
+int main(void)
 {
 	int		n;
 	char	*empty = "";
 	char	*null = NULL;
 
 	//basic c
-	n = ft_printf("\n\nbasic c: %c %c\n", '4', '2');
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("basic c: ");
+	n = ft_printf("%c%c", '4', '2');
+	ft_printf("\nprint byte: %d\n", n);
 	//overflow c
-	n = ft_printf("\n\noverflow c: %c\n", 128);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("overflow c: ");
+	n = ft_printf("%c", 128);
+	ft_printf("\nprint byte: %d\n", n);
+	
 
 	//empty s
-	n = ft_printf("\n\n\nempty s: %s\n", empty);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("\nempty s: ");
+	n = ft_printf("%s", empty);
+	ft_printf("\nprint byte: %d\n", n);
 	//basic s
-	n = ft_printf("\n\nbasic s: %s\n", "Hello 42");
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("basic s: ");
+	n = ft_printf("%s", "Hello 42");
+	ft_printf("\nprint byte: %d\n", n);
 	//null s
-	n = ft_printf("\n\nnull s: %s\n", null);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("null s: ");
+	n = ft_printf("%s", null);
+	ft_printf("\nprint byte: %d\n", n);
+	
 
 	//basic p
-	n = ft_printf("\n\n\nbasic p: %p\n", empty);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("\nbasic p: ");
+	n = ft_printf("%p", empty);
+	ft_printf("\nprint byte: %d\n", n);
 	//null p
-	n = ft_printf("\n\nnull p: %p\n", null);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("null p: ");
+	n = ft_printf("%p", null);
+	ft_printf("\nprint byte: %d\n", n);
+	
 
 	//basic d i
-	n = ft_printf("\n\n\nbasic d i: %d %i\n", 42, 24);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("\nbasic d i: ");
+	n = ft_printf("%d %i", 42, 24);
+	ft_printf("\nprint byte: %d\n", n);
 	//overflow d i
-	n = ft_printf("\n\noverflow d i: %d %i\n", INT_MAX + 1, INT_MIN - 1);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("overflow d i: ");
+	n = ft_printf("%d %i", INT_MAX + 1, INT_MIN - 1);
+	ft_printf("\nprint byte: %d\n", n);
+	
 
 	//basic u
-	n = ft_printf("\n\n\nbasic u: %u\n", INT_MAX * 2);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("\nbasic u: ");
+	n = ft_printf("%u", INT_MAX * 2);
+	ft_printf("\nprint byte: %d\n", n);
 	//overflow u
-	n = ft_printf("\n\noverflow u: %u %u\n", LONG_MAX + 1, -1);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
-	
+	ft_printf("overflow u: ");
+	n = ft_printf("%u %u", UINT_MAX + 1, -1);
+	ft_printf("\nprint byte: %d\n", n);
+
+
 	//basic x X
-	n = ft_printf("\n\n\nbasic x X: %x %X\n", 42, 4242);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("\nbasic x X: ");
+	n = ft_printf("%x %X", 42, 4242);
+	ft_printf("\nprint byte: %d\n", n);
 	//overflow x X
-	n = ft_printf("\n\noverflow x X: %x %X\n", LONG_MAX + 1, -1);
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("overflow x X: ");
+	n = ft_printf("%x %X", UINT_MAX + 1, -1);
+	ft_printf("\nprint byte: %d\n", n);
+	
 
 	//single %
-	n = ft_printf("\n\n\nsingle %%: %%\n");
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("\nsingle %%: ");
+	n = ft_printf("%%");
+	ft_printf("\nprint byte: %d\n", n);
 	//multiple %
-	n = ft_printf("\n\nmultiple %%: %% %%%% %%%%%% %%%% %%");
-	ft_putstr_fd("print byte: ", 1);
-	ft_putnbr_fd(n, 1);
+	ft_printf("multiple %%: ");
+	n = ft_printf("%% %%%% %%%%%% %%%% %%");
+	ft_printf("\nprint byte: %d\n", n);
+	
 
 	//mix
+	ft_printf("\nmix : ");
+	n = ft_printf("%s%c%c%c%c%c. %d %% %i = %u", "Hello", 'w', 'o', 'r', 'l', 'd', 6, 3, 0);
+	ft_printf("\nprint byte: %d\n", n);
 }

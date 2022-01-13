@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:38:58 by donshin           #+#    #+#              #
-#    Updated: 2022/01/13 13:05:48 by donshin          ###   ########.fr        #
+#    Updated: 2022/01/13 15:11:59 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
 
 test:
 	$(CC) $(CFLAG) -o test1 test_ft_printf.c $(SRCS) libft/*.c

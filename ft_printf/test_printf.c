@@ -8,71 +8,81 @@ int main(void)
 	char	*null = NULL;
 
 	//basic c
-	n = printf("\n\nbasic c: %c %c\n", '4', '2');
-	printf("print byte: %d", n);
-	
+	printf("basic c: ");
+	n = printf("%c%c", '4', '2');
+	printf("\nprint byte: %d\n", n);
 	//overflow c
-	n = printf("\n\noverflow c: %c\n", 128);
-	printf("print byte: %d", n);
+	printf("overflow c: ");
+	n = printf("%c", 128);
+	printf("\nprint byte: %d\n", n);
 	
 
 	//empty s
-	n = printf("\n\n\nempty s: %s\n", empty);
-	printf("print byte: %d", n);
-	
+	printf("\nempty s: ");
+	n = printf("%s", empty);
+	printf("\nprint byte: %d\n", n);
 	//basic s
-	n = printf("\n\nbasic s: %s\n", "Hello 42");
-	printf("print byte: %d", n);
-	
+	printf("basic s: ");
+	n = printf("%s", "Hello 42");
+	printf("\nprint byte: %d\n", n);
 	//null s
-	n = printf("\n\nnull s: %s\n", null);
-	printf("print byte: %d", n);
+	printf("null s: ");
+	n = printf("%s", null);
+	printf("\nprint byte: %d\n", n);
 	
 
 	//basic p
-	n = printf("\n\n\nbasic p: %p\n", empty);
-	printf("print byte: %d", n);
-	
+	printf("\nbasic p: ");
+	n = printf("%p", empty);
+	printf("\nprint byte: %d\n", n);
 	//null p
-	n = printf("\n\nnull p: %p\n", null);
-	printf("print byte: %d", n);
+	printf("null p: ");
+	n = printf("%p", null);
+	printf("\nprint byte: %d\n", n);
 	
 
 	//basic d i
-	n = printf("\n\n\nbasic d i: %d %i\n", 42, 24);
-	printf("print byte: %d", n);
-	
+	printf("\nbasic d i: ");
+	n = printf("%d %i", 42, 24);
+	printf("\nprint byte: %d\n", n);
 	//overflow d i
-	n = printf("\n\noverflow d i: %d %i\n", INT_MAX + 1, INT_MIN - 1);
-	printf("print byte: %d", n);
+	printf("overflow d i: ");
+	n = printf("%d %i", INT_MAX + 1, INT_MIN - 1);
+	printf("\nprint byte: %d\n", n);
 	
 
 	//basic u
-	n = printf("\n\n\nbasic u: %u\n", INT_MAX * 2);
-	printf("print byte: %d", n);
-	
+	printf("\nbasic u: ");
+	n = printf("%u", INT_MAX * 2);
+	printf("\nprint byte: %d\n", n);
 	//overflow u
-	n = printf("\n\noverflow u: %u %u\n", LONG_MAX + 1, -1);
-	printf("print byte: %d", n);
-	
-	
+	printf("overflow u: ");
+	n = printf("%u %u", UINT_MAX + 1, -1);
+	printf("\nprint byte: %d\n", n);
+
+
 	//basic x X
-	n = printf("\n\n\nbasic x X: %x %X\n", 42, 4242);
-	printf("print byte: %d", n);
-	
+	printf("\nbasic x X: ");
+	n = printf("%x %X", 42, 4242);
+	printf("\nprint byte: %d\n", n);
 	//overflow x X
-	n = printf("\n\noverflow x X: %x %X\n", LONG_MAX + 1, -1);
-	printf("print byte: %d", n);
+	printf("overflow x X: ");
+	n = printf("%x %X", UINT_MAX + 1, -1);
+	printf("\nprint byte: %d\n", n);
 	
 
 	//single %
-	n = printf("\n\n\nsingle %%: %%\n");
-	printf("print byte: %d", n);
-	
+	printf("\nsingle %%: ");
+	n = printf("%%");
+	printf("\nprint byte: %d\n", n);
 	//multiple %
-	n = printf("\n\nmultiple %%: %% %%%% %%%%%% %%%% %%");
-	printf("print byte: %d", n);
+	printf("multiple %%: ");
+	n = printf("%% %%%% %%%%%% %%%% %%");
+	printf("\nprint byte: %d\n", n);
 	
 
 	//mix
+	printf("\nmix : ");
+	n = printf("%s%c%c%c%c%c. %d %% %i = %u", "Hello", 'w', 'o', 'r', 'l', 'd', 6, 3, 0);
+	printf("\nprint byte: %d\n", n);
 }
