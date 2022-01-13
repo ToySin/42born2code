@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 14:38:58 by donshin           #+#    #+#              #
-#    Updated: 2022/01/13 15:11:59 by donshin          ###   ########.fr        #
+#    Updated: 2022/01/13 15:28:21 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,13 @@ SRCS = \
 
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) bonus -C ./libft
 	cp $(LIBFT) $(NAME)
 	ar rcus $@ $^
+
+all: $(NAME)
 
 clean:
 	$(MAKE) clean -C ./libft
