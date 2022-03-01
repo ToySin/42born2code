@@ -6,5 +6,5 @@ int	ft_is_valid_map(char *map_data)
 	int ext_start;
 
 	width = 0;
-	while (map_data)
+	//while (map_data)
 }
