@@ -1,5 +1,5 @@
 NAME = so_long
-LIBFT = -L./libft -lft
+LIBFT = lib/libft.a
 
 CC = gcc
 CFLAG = -Wall -Werror -Wextra
@@ -8,17 +8,17 @@ SRCS = src/*.c
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(SRCS)
-	$(MAKE) -C ./libft
+	$(MAKE) -C ./lib
 	$(CC) $(CFLAG) -o $@ $^ $(LIBFT)
 
 all: $(NAME)
 
 clean:
-	$(MAKE) clean -C ./libft
+	$(MAKE) clean -C ./lib
 	rm -f $(OBJS)
 
 fclean: clean
-	$(MAKE) fclean -C ./libft
+	$(MAKE) fclean -C ./lib
 	rm -f $(NAME)
 
 re: fclean all
