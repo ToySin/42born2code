@@ -1,5 +1,10 @@
 NAME = so_long
-LIBFT = lib/libft.a
+
+LIBFT_DIR = ./lib
+LIBFT_NAME = ft
+
+MLX_DIR = ./mlx
+MLX_NAME = mlx
 
 CC = gcc
 CFLAG = -Wall -Werror -Wextra
@@ -8,8 +13,9 @@ SRCS = src/*.c
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(SRCS)
-	$(MAKE) -C ./lib
-	$(CC) $(CFLAG) -o $@ $^ $(LIBFT)
+	$(MAKE) all -C ./lib
+	$(MAKE) all -C ./mlx
+	$(CC) $(CFLAG) -o $@ $^ -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME)
 
 all: $(NAME)
 
