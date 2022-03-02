@@ -56,8 +56,8 @@ $(LIBFT_DIR)/ft_lstmap.c
 LIBFT_OBJ = $(LIBFT_SRC:.c=.o)
 
 GNL_SRC = \
-$(GNL_DIR)/get_next_line_bonus.c \
-$(GNL_DIR)/get_next_line_utils_bonus.c
+$(GNL_DIR)/get_next_line.c \
+$(GNL_DIR)/get_next_line_utils.c
 GNL_OBJ = $(GNL_SRC:.c=.o)
 
 all: $(NAME)
