@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 21:25:43 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/02 21:27:16 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/07 11:47:45 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	error_exit(char *msg)
 {
-	ft_putstr_fd()
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(msg, 2);
+	exit(1);
 }
