@@ -21,3 +21,10 @@ libft:
 
 gnl:
 	
+clean:
+
+fclean: clean
+
+re: fclean all
+
+.PHONY: all libft gnl ft_print clean fclean re
