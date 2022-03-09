@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/01 18:04:07 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/07 20:48:06 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/get_next_line_bonus.h"
+#include "../../include/get_next_line.h"
 
 void	ft_my_strlcpy(char *dest, const char *src, size_t dstsize)
 {
