@@ -3,6 +3,7 @@
 
 # include <fcntl.h>
 
+# include "key.h"
 # include "error.h"
 # include "file.h"
 
@@ -10,21 +11,18 @@
 # include "../lib/include/get_next_line.h"
 # include "../mlx_beta/mlx.h"
 
-typedef struct	s_img
+typedef struct s_player
 {
-	char	*img_path;
-	int		width;
-	int		height;
-}				t_img;
+	int		pos_x;
+	int		pos_y;
+}			t_player;
 
 typedef struct s_map
 {
-
-	t_img	wall_img;
-	t_img	back_img;
-	t_img	player_img;
-	t_img	collection_img;
-	t_img	exit_img;
+	char	**map;
+	
+	int		width;
+	int		height;
 }				t_map;
 
 #endif
