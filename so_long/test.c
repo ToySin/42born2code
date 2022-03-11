@@ -24,6 +24,7 @@ int main()
 
 	mlx_put_image_to_window(mlx1, win1, back_img1, 0, 0);
 	mlx_put_image_to_window(mlx1, win1, back_img_big, 100, 100);
+	
 
 	mlx_put_image_to_window(mlx1, win1, img1, 200, 200);
 	mlx_put_image_to_window(mlx1, win1, img1, 100, 100);

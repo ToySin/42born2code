@@ -25,4 +25,9 @@ typedef struct s_map
 	int		height;
 }				t_map;
 
+typedef struct s_game
+{
+	t_player	player;
+}				t_game;
+
 #endif

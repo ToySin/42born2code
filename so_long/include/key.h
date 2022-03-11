@@ -17,6 +17,8 @@
 # define KEY_DOWN 125
 # define KEY_UP 126
 
+typedef struct s_game t_game;
 
+int	key_press(int keycode, t_game *param);
 
 #endif
