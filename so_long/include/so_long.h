@@ -4,6 +4,7 @@
 # include <fcntl.h>
 
 # include "key.h"
+# include "player.h"
 # include "error.h"
 # include "file.h"
 
@@ -27,7 +28,8 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_player	player;
+	t_player	player_info;
+	t_map		map_info;
 }				t_game;
 
 #endif
