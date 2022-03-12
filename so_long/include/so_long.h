@@ -16,18 +16,27 @@ typedef struct s_player
 {
 	int		pos_x;
 	int		pos_y;
+	void	*front_img;
+	void	*back_img;
+	void	*left_img;
+	void	*right_img;
 }			t_player;
 
 typedef struct s_map
 {
 	char	**map;
-	
 	int		width;
 	int		height;
+	void	*wall_img;
+	void	*background_img;
+	void	*collection_img;
+	void	*exit_img;
 }				t_map;
 
 typedef struct s_game
 {
+	void		*mlx;
+	void		*win;
 	t_player	player_info;
 	t_map		map_info;
 }				t_game;
