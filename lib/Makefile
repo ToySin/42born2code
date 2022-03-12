@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/12 16:04:27 by donshin           #+#    #+#              #
+#    Updated: 2022/03/12 16:06:33 by donshin          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libft.a
 
 CC = gcc
@@ -73,11 +85,10 @@ libft: $(LIBFT_OBJ)
 gnl: $(GNL_OBJ)
 
 clean:
-	$(MAKE) clean -C $(LIBFT_DIR)
+	rm -f $(LIBFT_OBJ)
 	rm -f $(GNL_OBJ)
 
 fclean: clean
-	$(MAKE) fclean -C $(LIBFT_DIR)
 	rm -f $(NAME)
 
 re: fclean all

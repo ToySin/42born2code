@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:27:59 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/01 18:01:16 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/12 16:01:39 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/get_next_line_bonus.h"
+#include "../../include/get_next_line.h"
 
 static t_save	*ft_find_fd(t_save *header, int fd);
 static char		*ft_string_adder(int fd, char *save);
