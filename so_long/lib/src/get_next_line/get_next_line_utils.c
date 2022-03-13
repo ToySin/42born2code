@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 13:40:28 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/07 20:48:06 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/12 16:08:00 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,6 @@ char	*ft_my_strjoin(char *s1, char *s2)
 	ft_my_strlcpy(comb + s1_len, s2, s2_len + 1);
 	free(s1);
 	return (comb);
-}
-
-char	*ft_strdup(char *s)
-{
-	size_t	len;
-	char	*dup;
-
-	if (!s)
-		return (NULL);
-	len = 0;
-	while (s[len])
-		len++;
-	dup = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dup)
-		return (NULL);
-	ft_my_strlcpy(dup, s, len + 1);
-	return (dup);
 }
 
 void	ft_my_lstdelone(t_save *lst)

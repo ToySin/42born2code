@@ -6,14 +6,14 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 15:03:12 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/12 15:23:46 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/12 18:00:16 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-const static int width = 32;
-const static int height = 32;
+static int width = 32;
+static int height = 32;
 
 void	player_img_load(t_game *param)
 {

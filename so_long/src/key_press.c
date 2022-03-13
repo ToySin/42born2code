@@ -14,4 +14,5 @@ int	key_press(int keycode, t_game *game)
 		move_right(game);
 	else if (keycode == KEY_ESC)
 		exit(0);
+	return (0);
 }

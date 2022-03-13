@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_file.c                                        :+:      :+:    :+:   */
+/*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/13 22:00:58 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/13 22:16:18 by donshin          ###   ########.fr       */
+/*   Created: 2022/03/13 21:51:13 by donshin           #+#    #+#             */
+/*   Updated: 2022/03/13 21:53:08 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#ifndef DRAW_H
+# define DRAW_H
 
-int	open_file(char *file_path)
-{
-	int	fd;
+typedef struct s_game t_game;
 
-	fd = open(file_path, O_RDONLY);
-	if (fd < 0)
-		error_exit("File open fail!\n");
-	return (fd);
-}
+void	draw_map(t_game *game);
+void	draw_player(t_game *game);
+void	draw_collections(t_game *game);
+void	draw_exit(t_game *game);
 
-char	**read_map(int fd)
-{
-	char	*line;
-	char	*result;
-	char	*temp;
-
-	result = '\0';
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		temp = ft_strjoin(result, line);
-		free(result);
-		result = temp;
-	}
-}
+#endif
