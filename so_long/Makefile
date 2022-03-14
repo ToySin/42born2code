@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/12 16:14:52 by donshin           #+#    #+#              #
-#    Updated: 2022/03/13 09:15:11 by donshin          ###   ########.fr        #
+#    Updated: 2022/03/14 14:34:59 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ OBJS = $(SRCS:.c=.o)
 $(NAME): $(SRCS)
 	$(MAKE) -C ./lib
 	$(MAKE) -C ./mlx_beta
-	install_name_tool -add_rpath @rpath/mlx_beta libmlx.dylib
-	$(CC) $(CFLAG) -o $@ $^ -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME)
+	cp $(MLX_DIR)/$(MLX) ./$(MLX)
+	$(CC) $(CFLAG) -o $@ $^ -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L./ -l$(MLX_NAME)
 
 all: $(NAME)
 
@@ -47,7 +47,7 @@ re: fclean all
 
 
 test:
-	$(MAKE) all -C ./mlx_beta
+	$(MAKE) -C ./mlx_beta
 	cp $(MLX_DIR)/$(MLX) ./$(MLX)
 	gcc -L./ -lmlx test.c -o test.out
 

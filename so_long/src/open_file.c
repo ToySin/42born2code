@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 22:00:58 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/13 22:16:18 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/14 14:35:27 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**read_map(int fd)
 	char	*result;
 	char	*temp;
 
-	result = '\0';
+	result = ft_strdup("");
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -38,4 +38,5 @@ char	**read_map(int fd)
 		free(result);
 		result = temp;
 	}
+	return (ft_split(result, '\n'));
 }

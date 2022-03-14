@@ -1,4 +1,5 @@
 #include "../include/so_long.h"
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -10,6 +11,14 @@ int	main(int argc, char **argv)
 	fd = open_file(argv[1]);
 
 	// map read
+	game.map_info.map = read_map(fd);
+
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < 5; j++) {
+			printf("%c", game.map_info.map[i][j]);
+		}
+		
+	}
 
 	// mlx window ~~~
 }
