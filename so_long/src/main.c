@@ -13,12 +13,14 @@ int	main(int argc, char **argv)
 	// map read
 	game.map_info.map = read_map(fd);
 
-	for (int i = 0; i < 6; i++) {
-		for (int j = 0; j < 5; j++) {
-			printf("%c", game.map_info.map[i][j]);
-		}
-		
-	}
+	// map check
+
+
+	// init game
+	//  img load
+	//  mlx init
+	player_img_load(&game);
+	map_img_load(&game);
 
 	// mlx window ~~~
 }
