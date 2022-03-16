@@ -3,14 +3,20 @@
 
 # include <fcntl.h>
 
+#include <stdio.h>
+
 # include "key.h"
 # include "player.h"
 # include "error.h"
 # include "file.h"
+# include "draw.h"
+# include "init.h"
 
 # include "../lib/include/libft.h"
 # include "../lib/include/get_next_line.h"
 # include "../mlx_beta/mlx.h"
+
+# define BLOCK_SIZE 64
 
 typedef struct s_player
 {
