@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 22:00:58 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/16 15:56:10 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/17 17:16:08 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	open_file(char *file_path)
 	return (fd);
 }
 
-char	**read_map(int fd)
+char	**read_file(int fd)
 {
 	char	**result;
 	char	*line;
