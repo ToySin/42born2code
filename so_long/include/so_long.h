@@ -11,6 +11,7 @@
 # include "file.h"
 # include "draw.h"
 # include "init.h"
+# include "map.h"
 
 # include "../lib/include/libft.h"
 # include "../lib/include/get_next_line.h"

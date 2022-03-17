@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 09:41:32 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/16 20:09:29 by donshin          ###   ########.fr       */
+/*   Created: 2022/03/17 17:19:23 by donshin           #+#    #+#             */
+/*   Updated: 2022/03/17 19:46:50 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#ifndef MAP_H
+# define MAP_H
 
 typedef struct s_game t_game;
 
-void	init_window(t_game *game);
-void	init_img(t_game *game);
-
-void	player_img_load(t_game *game);
-void	map_img_load(t_game *game);
+void	check_map_square(t_game *game);
+void	check_map_surrounded(t_game *game);
+void	check_map_component(t_game *game);
 
 #endif

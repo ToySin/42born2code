@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	fd = open_file(argv[1]);
 
 	// map read
-	game.map_info.map = read_map(fd);
+	game.map_info.map = read_file(fd);
 	game.map_info.height = 6;
 	game.map_info.width = 5;
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	//  img load
 	player_img_load(&game);
 	map_img_load(&game);
-	
+
 	//init mlx win
 	init_window(&game);
 

@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:54:55 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/16 17:59:05 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/16 21:30:40 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ void	init_window(t_game *game)
 	game->win = mlx_new_window(game->mlx, width, height, "so_long");
 	if (!game->win)
 		error_exit("mlx_new_window() fail\n");
+}
+
+void	init_img(t_game *game)
+{
+
 }
