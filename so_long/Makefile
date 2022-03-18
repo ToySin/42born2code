@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/12 16:14:52 by donshin           #+#    #+#              #
-#    Updated: 2022/03/14 14:34:59 by donshin          ###   ########.fr        #
+#    Created: 2022/03/18 14:03:47 by donshin           #+#    #+#              #
+#    Updated: 2022/03/18 15:02:57 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,22 +14,27 @@ NAME = so_long
 
 LIBFT_DIR = ./lib
 LIBFT_NAME = ft
+LIBFT = libft.a
 
 MLX_DIR = ./mlx_beta
 MLX_NAME = mlx
 MLX = libmlx.dylib
 
 CC = gcc
-CFLAG = -Wall -Werror -Wextra
+CFLAG = -Wall -Wextra -Werror
 
-SRCS = src/*.c
+INCLUDE_DIR = ./include
+
+SRC_DIR = ./src
+SRCS = $(SRC_DIR)/*.c
 OBJS = $(SRCS:.c=.o)
 
-$(NAME): $(SRCS)
-	$(MAKE) -C ./lib
-	$(MAKE) -C ./mlx_beta
-	cp $(MLX_DIR)/$(MLX) ./$(MLX)
-	$(CC) $(CFLAG) -o $@ $^ -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L./ -l$(MLX_NAME)
+$(NAME): $(OBJS)
+	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CFLAG) -o $@ $^ \
+		-L(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME)
+	install_name_tool -change $(MLX) $(MLX_DIR)/$(MLX) $@
 
 all: $(NAME)
 
@@ -39,17 +44,17 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	$(MAKE) fclean -C ./lib
+	$(MAKE) fclean -C $(LIBFT_DIR)
 	rm -f $(NAME)
-	rm -f $(MLX)
+	rm -f $(MLX_DIR)/$(MLX)
 
-re: fclean all
-
+re: fclean re
 
 test:
-	$(MAKE) -C ./mlx_beta
-	cp $(MLX_DIR)/$(MLX) ./$(MLX)
-	gcc -L./ -lmlx test.c -o test.out
-
+	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(MLX_DIR)
+	$(CC) $(CLFAG) -o test.out test.c \
+		-L(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME)
+	install_name_tool -change $(MLX) $(MLX_DIR)/$(MLX) test.out
 
 .PHONY: all clean fclean re
