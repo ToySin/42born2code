@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/19 01:02:32 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/19 02:01:05 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,22 @@ typedef struct s_flag
 
 }	t_flag;
 
+typedef struct s_asset
+{
+	void	*collection_img;
+	void	*flag_img;
+	void	*player_img;
+	void	*tile_img;
+	void	*wall_img;
+}	t_asset;
+
 typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
 	t_map	map_info;
 	t_comp	map_comp;
+	t_asset	assets;
 }	t_game;
 
 void	error_exit(char *msg);
@@ -72,6 +82,9 @@ void	get_map_component(t_game *game);
 
 void	init_map(t_game *game, char *file_path);
 void	init_win(t_game *game);
+void	init_img(t_game *game);
 void	init_game(t_game *game, char *file_path);
+
+void	draw_map(t_game *game);
 
 #endif

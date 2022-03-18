@@ -1,18 +1,6 @@
 #include "include/so_long.h"
 #include <stdio.h>
 
-void	error_exit(char *msg);
-
-int		open_file(char *file_path);
-char	**read_file(int fd);
-
-void	get_map_size(t_game *game);
-void	get_map_component(t_game *game);
-
-void	init_map(t_game *game, char *file_path);
-void	init_win(t_game *game);
-void	init_game(t_game *game, char *file_path);
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -22,7 +10,7 @@ int	main(int argc, char **argv)
 		error_exit("Correct usage: ./so_long [MAP_FILE].ber");
 
 	init_game(&game, argv[1]);
-	printf("row: %d, col: %d\n", game.map_info.row, game.map_info.col);
+	draw_map(&game);
 	mlx_loop(game.mlx);
 }
 
@@ -128,8 +116,50 @@ void	init_win(t_game *game)
 			game->map_info.row * BLOCK_SIZE, "so_long");
 }
 
+void	init_img(t_game *game)
+{
+	int	img_size;
+
+	img_size = 64;
+	game->assets.collection_img =
+			mlx_xpm_file_to_image(game->mlx,
+			"asset/collection.xpm", &img_size, &img_size);
+	game->assets.flag_img =
+			mlx_xpm_file_to_image(game->mlx,
+			"asset/flag.xpm", &img_size, &img_size);
+	game->assets.player_img =
+			mlx_xpm_file_to_image(game->mlx,
+			"asset/player.xpm", &img_size, &img_size);
+	game->assets.tile_img =
+			mlx_xpm_file_to_image(game->mlx,
+			"asset/tile.xpm", &img_size, &img_size);
+	game->assets.wall_img =
+			mlx_xpm_file_to_image(game->mlx,
+			"asset/wall.xpm", &img_size, &img_size);
+}
+
 void	init_game(t_game *game, char *file_path)
 {
 	init_map(game, file_path);
 	init_win(game);
+	init_img(game);
+}
+
+void	draw_map(t_game *game)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	while (row < game->map_info.row)
+	{
+		col = 0;
+		while (col < game->map_info.col)
+		{
+			mlx_put_image_to_window(game->mlx, game->win,
+					game->assets.tile_img, col * BLOCK_SIZE, row * BLOCK_SIZE);
+			col++;
+		}
+		row++;
+	}
 }
