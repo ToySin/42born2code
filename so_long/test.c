@@ -158,6 +158,9 @@ void	draw_map(t_game *game)
 		{
 			mlx_put_image_to_window(game->mlx, game->win,
 					game->assets.tile_img, col * BLOCK_SIZE, row * BLOCK_SIZE);
+			if (game->map_info.map[row][col] == '1')
+				mlx_put_image_to_window(game->mlx, game->win,
+						game->assets.wall_img, col * BLOCK_SIZE, row * BLOCK_SIZE);
 			col++;
 		}
 		row++;

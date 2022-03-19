@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/19 02:01:05 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/19 11:50:23 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ typedef struct s_map
 	int		col;
 }	t_map;
 
-typedef struct s_flag
+typedef struct s_status
 {
 
-}	t_flag;
+}	t_status;
 
 typedef struct s_asset
 {
@@ -86,5 +86,8 @@ void	init_img(t_game *game);
 void	init_game(t_game *game, char *file_path);
 
 void	draw_map(t_game *game);
+void	draw_collection(t_game *game);
+void	draw_flag(t_game *game);
+void	draw_player(t_game *game);
 
 #endif
