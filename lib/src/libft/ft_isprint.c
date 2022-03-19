@@ -6,11 +6,9 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 21:09:11 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/01 18:11:47 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/19 19:24:34 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../../include/libft.h"
 
 int	ft_isprint(int c)
 {
