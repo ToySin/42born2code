@@ -14,6 +14,11 @@ int	main(int argc, char **argv)
 	mlx_loop(game.mlx);
 }
 
+void	ft_put_img64(t_game *game, void *img, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx, game->win, img, x * BLOCK_SIZE, y * BLOCK_SIZE);
+}
+
 void	error_exit(char *msg)
 {
 	ft_putendl_fd("Error", 1);
@@ -71,6 +76,7 @@ void	get_map_size(t_game *game)
 
 void	get_map_component(t_game *game)
 {
+	t_list	*node;
 	char	**map;
 	int		row;
 	int		col;
@@ -85,9 +91,15 @@ void	get_map_component(t_game *game)
 			if (map[row][col] == 'P')
 				game->map_comp.num_player_spon++;
 			else if (map[row][col] == 'C')
-				game->map_comp.num_collections++;
+			{
+				ft_lstadd_back(&(game->map_comp.collection_list),
+						ft_lstnew(get_collection_node(col, row)));
+			}
 			else if (map[row][col] == 'E')
-				game->map_comp.num_flag++;
+			{
+				ft_lstadd_back(&(game->map_comp.portal_list),
+						ft_lstnew(get_portal_node(col, row)));
+			}
 			col++;
 		}
 		row++;
@@ -124,9 +136,9 @@ void	init_img(t_game *game)
 	game->assets.collection_img =
 			mlx_xpm_file_to_image(game->mlx,
 			"asset/collection.xpm", &img_size, &img_size);
-	game->assets.flag_img =
+	game->assets.portal_img =
 			mlx_xpm_file_to_image(game->mlx,
-			"asset/flag.xpm", &img_size, &img_size);
+			"asset/portal.xpm", &img_size, &img_size);
 	game->assets.player_img =
 			mlx_xpm_file_to_image(game->mlx,
 			"asset/player.xpm", &img_size, &img_size);
@@ -156,13 +168,16 @@ void	draw_map(t_game *game)
 		col = 0;
 		while (col < game->map_info.col)
 		{
-			mlx_put_image_to_window(game->mlx, game->win,
-					game->assets.tile_img, col * BLOCK_SIZE, row * BLOCK_SIZE);
+			ft_put_img64(game, game->assets.tile_img, col, row);
 			if (game->map_info.map[row][col] == '1')
-				mlx_put_image_to_window(game->mlx, game->win,
-						game->assets.wall_img, col * BLOCK_SIZE, row * BLOCK_SIZE);
+				ft_put_img64(game, game->assets.wall_img, col, row);
 			col++;
 		}
 		row++;
 	}
+}
+
+void	draw_component(t_game *game)
+{
+
 }

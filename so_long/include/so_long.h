@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/19 11:50:23 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/19 18:42:41 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,23 @@ typedef struct s_pos
 	int	y;
 }	t_pos;
 
-typedef struct s_comp
-{
-	int	num_player_spon;
-	int	num_collections;
-	int	num_flag;
-}	t_comp;
-
-typedef struct s_player
+typedef struct s_collection
 {
 	t_pos	pos;
-	int		num_collect;
-}	t_player;
+	int		is_collected;
+}	t_collection;
+
+typedef struct s_portal
+{
+	t_pos	pos;
+}	t_portal;
+
+typedef struct s_comp
+{
+	int		num_player_spon;
+	t_list	*collection_list;
+	t_list	*portal_list;
+}	t_comp;
 
 typedef struct s_map
 {
@@ -49,15 +54,10 @@ typedef struct s_map
 	int		col;
 }	t_map;
 
-typedef struct s_status
-{
-
-}	t_status;
-
 typedef struct s_asset
 {
 	void	*collection_img;
-	void	*flag_img;
+	void	*portal_img;
 	void	*player_img;
 	void	*tile_img;
 	void	*wall_img;
@@ -72,22 +72,28 @@ typedef struct s_game
 	t_asset	assets;
 }	t_game;
 
+t_collection	*get_collection_node(int x, int y);
+t_portal		*get_portal_node(int x, int y);
+
+
+void	ft_put_img64(t_game *game, void *img, int x, int y);
+
 void	error_exit(char *msg);
 
 int		open_file(char *file_path);
 char	**read_file(int fd);
 
 void	get_map_size(t_game *game);
-void	get_map_component(t_game *game);
+void	get_map_component(t_game *game); //컴포넌트를 구조체 방식으로 변경하기
 
 void	init_map(t_game *game, char *file_path);
+//void	init_player(t_game *game);
 void	init_win(t_game *game);
 void	init_img(t_game *game);
 void	init_game(t_game *game, char *file_path);
 
 void	draw_map(t_game *game);
-void	draw_collection(t_game *game);
-void	draw_flag(t_game *game);
+void	draw_component(t_game *game);
 void	draw_player(t_game *game);
 
 #endif
