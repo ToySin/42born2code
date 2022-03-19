@@ -14,9 +14,35 @@ int	main(int argc, char **argv)
 	mlx_loop(game.mlx);
 }
 
+t_collection	*get_collection_node(int x, int y)
+{
+	t_collection	*node;
+
+	node = malloc(sizeof(t_collection));
+	if (!node)
+		error_exit("Memory allocation fail\n");
+	node->pos.x = x;
+	node->pos.y = y;
+	node->is_collected = 0;
+	return (node);
+}
+
+t_portal	*get_portal_node(int x, int y)
+{
+	t_portal	*node;
+
+	node = malloc(sizeof(t_portal));
+	if (!node)
+		error_exit("Memory allocation fail\n");
+	node->pos.x = x;
+	node->pos.y = y;
+	return (node);
+}
+
 void	ft_put_img64(t_game *game, void *img, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx, game->win, img, x * BLOCK_SIZE, y * BLOCK_SIZE);
+	mlx_put_image_to_window(game->mlx, game->win, img,
+			x * BLOCK_SIZE, y * BLOCK_SIZE);
 }
 
 void	error_exit(char *msg)
@@ -177,7 +203,13 @@ void	draw_map(t_game *game)
 	}
 }
 
-void	draw_component(t_game *game)
+static void	_draw_collection(t_game *game)
 {
 
+}
+
+void	draw_component(t_game *game)
+{
+// 	ft_lstiter(game->map_comp.collection_list,
+// 			_draw_collection(game,))
 }
