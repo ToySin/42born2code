@@ -265,7 +265,7 @@ void	draw_map(t_game *game)
 	}
 }
 
-static void	_draw_collection(t_game *game)
+void	draw_collection(t_game *game)
 {
 	t_collection	*i_node;
 
@@ -279,7 +279,7 @@ static void	_draw_collection(t_game *game)
 	}
 }
 
-static void	_draw_portal(t_game *game)
+void	draw_portal(t_game *game)
 {
 	t_portal	*i_node;
 
@@ -294,8 +294,8 @@ static void	_draw_portal(t_game *game)
 
 void	draw_component(t_game *game)
 {
-	_draw_collection(game);
-	_draw_portal(game);
+	draw_collection(game);
+	draw_portal(game);
 }
 
 void	draw_player(t_game *game)
@@ -357,10 +357,21 @@ static void	collect_process(t_game *game)
 	node = find_collection_node(game);
 	if (node)
 	{
-		
+
 	}
 }
 
+
+/**
+ * @brief 
+ * 
+ * @param game 
+ * @param dir
+ * 두가지 방법이 있다. 일단 이동 유효성을 검사 한 상태이다.
+ * 1. 플레이어가 이동할 곳과 있던 곳에 타일을 깐다.
+ * 2. 포탈을 다시 깐다.
+ * 3. 플레이어를 다시 깐다.
+ */
 void	move_dir(t_game *game, int dir)
 {
 	int	target_x;
@@ -384,7 +395,7 @@ void	move_dir(t_game *game, int dir)
 	if (game->player.is_collect_all)
 		//game clear
 
-	
+	draw_portal(game);
 	draw_player(game);
 }
 
