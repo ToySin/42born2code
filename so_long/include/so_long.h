@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/19 18:42:41 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/21 19:15:19 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,26 @@
 
 # define BLOCK_SIZE 64
 
+# define X_EVENT_KEY_PRESS 2
 # define X_EVENT_KEY_EXIT 17
+
+# define KEY_R 15
+# define KEY_ESC 53
+
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_W 13
+
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_DOWN 125
+# define KEY_UP 126
+
+# define UP 0
+# define DOWN 1
+# define LEFT 2
+# define RIGHT 3
 
 typedef struct s_pos
 {
@@ -31,20 +50,22 @@ typedef struct s_pos
 
 typedef struct s_collection
 {
-	t_pos	pos;
-	int		is_collected;
+	t_pos				pos;
+	int					is_collected;
+	struct s_collection	*next;
 }	t_collection;
 
 typedef struct s_portal
 {
-	t_pos	pos;
+	t_pos			pos;
+	struct s_portal	*next;
 }	t_portal;
 
 typedef struct s_comp
 {
-	int		num_player_spon;
-	t_list	*collection_list;
-	t_list	*portal_list;
+	int				num_player_spon;
+	t_collection	collection_list;
+	t_portal		portal_list;
 }	t_comp;
 
 typedef struct s_map
@@ -63,17 +84,21 @@ typedef struct s_asset
 	void	*wall_img;
 }	t_asset;
 
+typedef struct s_player
+{
+	t_pos	pos;
+	int		is_collect_all;
+}	t_player;
+
 typedef struct s_game
 {
-	void	*mlx;
-	void	*win;
-	t_map	map_info;
-	t_comp	map_comp;
-	t_asset	assets;
+	void		*mlx;
+	void		*win;
+	t_map		map_info;
+	t_comp		map_comp;
+	t_asset		assets;
+	t_player	player;
 }	t_game;
-
-t_collection	*get_collection_node(int x, int y);
-t_portal		*get_portal_node(int x, int y);
 
 
 void	ft_put_img64(t_game *game, void *img, int x, int y);
@@ -86,14 +111,28 @@ char	**read_file(int fd);
 void	get_map_size(t_game *game);
 void	get_map_component(t_game *game); //컴포넌트를 구조체 방식으로 변경하기
 
+void	add_collection(t_game *game, int x, int y);
+void	add_portal(t_game *game, int x, int y);
+
 void	init_map(t_game *game, char *file_path);
-//void	init_player(t_game *game);
+void	init_player(t_game *game);
 void	init_win(t_game *game);
 void	init_img(t_game *game);
+void	init_comp(t_game *game);
 void	init_game(t_game *game, char *file_path);
 
 void	draw_map(t_game *game);
 void	draw_component(t_game *game);
 void	draw_player(t_game *game);
+
+int		key_press(int keycode, t_game *game);
+
+int		is_collision(t_game *game, int x, int y);
+
+void	move_dir(t_game *game, int dir);
+void	move_up(t_game *game);
+void	move_down(t_game *game);
+void	move_left(t_game *game);
+void	move_right(t_game *game);
 
 #endif
