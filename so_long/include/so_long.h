@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 15:44:26 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/22 17:35:45 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int		close_exit(t_game *game);
 int		open_file(char *file_path);
 char	**read_file(int fd);
 
+int		is_collision(t_game *game, int x, int y);
 void	get_map_size(t_game *game);
 void	get_map_component(t_game *game);
 void	get_player_spon_site(t_game *game);
@@ -121,6 +122,7 @@ void	add_portal(t_game *game, int x, int y);
 
 void	collect_process(t_game *game);
 void	portal_process(t_game *game);
+void	footprint_process(t_game *game);
 
 void	init_map(t_game *game, char *file_path);
 void	init_player(t_game *game);
@@ -128,6 +130,11 @@ void	init_win(t_game *game);
 void	init_img(t_game *game);
 void	init_comp(t_game *game);
 void	init_game(t_game *game, char *file_path);
+
+void	check_component_cnt(t_game *game);
+void	check_map_square(t_game *game);
+void	check_map_surrounded(t_game *game);
+void	check_map_comp(char c);
 
 void	draw_map(t_game *game);
 void	draw_collection(t_game *game);

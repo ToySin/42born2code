@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:43:41 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 15:52:57 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/22 17:35:58 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	init_map(t_game *game, char *file_path)
 		error_exit("Failed to read file.");
 	get_map_size(game);
 	get_map_component(game);
+	check_component_cnt(game);
+	check_map_square(game);
+	check_map_surrounded(game);
 }
 
 void	init_player(t_game *game)

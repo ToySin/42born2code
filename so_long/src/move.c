@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:46:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 15:27:58 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/22 16:39:30 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 const static int	g_coordinates_x[4] = {0, 0, -1, 1};
 const static int	g_coordinates_y[4] = {-1, 1, 0, 0};
-
-static int	is_collision(t_game *game, int x, int y)
-{
-	return (game->map_info.map[y][x] == '1');
-}
 
 void	move_dir(t_game *game, int dir)
 {
@@ -37,6 +32,7 @@ void	move_dir(t_game *game, int dir)
 			game->player.pos.x, game->player.pos.y);
 	collect_process(game);
 	portal_process(game);
+	footprint_process(game);
 	draw_portal(game);
 	draw_player(game);
 }

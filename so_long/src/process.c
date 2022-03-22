@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:31:02 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 15:33:03 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/22 16:38:55 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,13 @@ void	collect_process(t_game *game)
 void	portal_process(t_game *game)
 {
 	if (find_portal_node(game) && game->player.is_have_key)
-		exit(0); // game done
+		close_exit(game);
+}
+
+void	footprint_process(t_game *game)
+{
+	game->player.movement_cnt++;
+	ft_putstr_fd("Movement cnt: ", 1);
+	ft_putnbr_fd(game->player.movement_cnt, 1);
+	ft_putendl_fd("", 1);
 }

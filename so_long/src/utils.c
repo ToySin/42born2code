@@ -6,11 +6,16 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:43:11 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 15:43:27 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/22 17:12:12 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+int	is_collision(t_game *game, int x, int y)
+{
+	return (game->map_info.map[y][x] == '1');
+}
 
 void	get_map_size(t_game *game)
 {
@@ -40,6 +45,7 @@ void	get_map_component(t_game *game)
 		col = 0;
 		while (col < game->map_info.col)
 		{
+			check_map_comp(map[row][col]);
 			if (map[row][col] == 'P')
 				game->map_comp.num_player_spon++;
 			else if (map[row][col] == 'C')

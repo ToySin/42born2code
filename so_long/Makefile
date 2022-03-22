@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 14:03:47 by donshin           #+#    #+#              #
-#    Updated: 2022/03/22 15:53:15 by donshin          ###   ########.fr        #
+#    Updated: 2022/03/22 17:12:58 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC_DIR = ./src
 SRCS = $(SRC_DIR)/draw.c $(SRC_DIR)/end.c $(SRC_DIR)/file.c \
 	$(SRC_DIR)/ft_mlx.c $(SRC_DIR)/init.c $(SRC_DIR)/lst_add.c \
 	$(SRC_DIR)/move.c $(SRC_DIR)/process.c $(SRC_DIR)/so_long.c \
-	$(SRC_DIR)/utils.c
+	$(SRC_DIR)/utils.c $(SRC_DIR)/check.c
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
