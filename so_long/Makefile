@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 14:03:47 by donshin           #+#    #+#              #
-#    Updated: 2022/03/19 12:09:27 by donshin          ###   ########.fr        #
+#    Updated: 2022/03/22 15:53:15 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,10 @@ CFLAG = -Wall -Wextra -Werror
 INCLUDE_DIR = ./include
 
 SRC_DIR = ./src
-SRCS = $(SRC_DIR)/*.c
+SRCS = $(SRC_DIR)/draw.c $(SRC_DIR)/end.c $(SRC_DIR)/file.c \
+	$(SRC_DIR)/ft_mlx.c $(SRC_DIR)/init.c $(SRC_DIR)/lst_add.c \
+	$(SRC_DIR)/move.c $(SRC_DIR)/process.c $(SRC_DIR)/so_long.c \
+	$(SRC_DIR)/utils.c
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
@@ -35,6 +38,9 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAG) -o $@ $^ \
 		-L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME)
 	install_name_tool -change $(MLX) $(MLX_DIR)/$(MLX) $@
+
+%.o: %.c
+	$(CC) $(CFLAG) -o $@ -c $^
 
 all: $(NAME)
 
@@ -48,7 +54,7 @@ fclean: clean
 	rm -f $(NAME)
 	rm -f $(MLX_DIR)/$(MLX)
 
-re: fclean re
+re: fclean all
 
 test:
 	$(MAKE) -C $(LIBFT_DIR)

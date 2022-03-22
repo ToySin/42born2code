@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/21 19:15:19 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/22 15:44:26 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_portal
 typedef struct s_comp
 {
 	int				num_player_spon;
+	int				num_collections;
 	t_collection	collection_list;
 	t_portal		portal_list;
 }	t_comp;
@@ -87,7 +88,9 @@ typedef struct s_asset
 typedef struct s_player
 {
 	t_pos	pos;
-	int		is_collect_all;
+	int		num_collected;
+	int		is_have_key;
+	int		movement_cnt;
 }	t_player;
 
 typedef struct s_game
@@ -100,19 +103,24 @@ typedef struct s_game
 	t_player	player;
 }	t_game;
 
-
+void	*ft_load_img(t_game *game, char *file_path);
 void	ft_put_img64(t_game *game, void *img, int x, int y);
 
 void	error_exit(char *msg);
+int		close_exit(t_game *game);
 
 int		open_file(char *file_path);
 char	**read_file(int fd);
 
 void	get_map_size(t_game *game);
-void	get_map_component(t_game *game); //컴포넌트를 구조체 방식으로 변경하기
+void	get_map_component(t_game *game);
+void	get_player_spon_site(t_game *game);
 
 void	add_collection(t_game *game, int x, int y);
 void	add_portal(t_game *game, int x, int y);
+
+void	collect_process(t_game *game);
+void	portal_process(t_game *game);
 
 void	init_map(t_game *game, char *file_path);
 void	init_player(t_game *game);
@@ -122,12 +130,11 @@ void	init_comp(t_game *game);
 void	init_game(t_game *game, char *file_path);
 
 void	draw_map(t_game *game);
-void	draw_component(t_game *game);
+void	draw_collection(t_game *game);
+void	draw_portal(t_game *game);
 void	draw_player(t_game *game);
 
 int		key_press(int keycode, t_game *game);
-
-int		is_collision(t_game *game, int x, int y);
 
 void	move_dir(t_game *game, int dir);
 void	move_up(t_game *game);

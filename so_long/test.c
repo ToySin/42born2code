@@ -17,7 +17,8 @@ int	main(int argc, char **argv)
 
 	init_game(&game, argv[1]);
 	draw_map(&game);
-	draw_component(&game);
+	draw_collection(&game);
+	draw_portal(&game);
 	draw_player(&game);
 
 	mlx_hook(game.win, X_EVENT_KEY_PRESS, 0, &key_press, &game);
@@ -50,11 +51,6 @@ static t_portal	*get_portal_node(int x, int y)
 	return (node);
 }
 
-void	ft_put_img64(t_game *game, void *img, int x, int y)
-{
-	mlx_put_image_to_window(game->mlx, game->win, img,
-			x * BLOCK_SIZE, y * BLOCK_SIZE);
-}
 
 void	error_exit(char *msg)
 {
@@ -168,6 +164,7 @@ void	add_collection(t_game *game, int x, int y)
 	node = get_collection_node(x, y);
 	node->next = game->map_comp.collection_list.next;
 	game->map_comp.collection_list.next = node;
+	game->map_comp.num_collections++;
 }
 
 void	add_portal(t_game *game, int x, int y)
@@ -195,7 +192,9 @@ void	init_map(t_game *game, char *file_path)
 
 void	init_player(t_game *game)
 {
-	game->player.is_collect_all = 0;
+	game->player.num_collected = 0;
+	game->player.is_have_key = 0;
+	game->player.movement_cnt = 0;
 	get_player_spon_site(game);
 }
 
@@ -212,21 +211,11 @@ void	init_img(t_game *game)
 	int	img_size;
 
 	img_size = 64;
-	game->assets.collection_img =
-			mlx_xpm_file_to_image(game->mlx,
-			"asset/collection.xpm", &img_size, &img_size);
-	game->assets.portal_img =
-			mlx_xpm_file_to_image(game->mlx,
-			"asset/portal.xpm", &img_size, &img_size);
-	game->assets.player_img =
-			mlx_xpm_file_to_image(game->mlx,
-			"asset/player.xpm", &img_size, &img_size);
-	game->assets.tile_img =
-			mlx_xpm_file_to_image(game->mlx,
-			"asset/tile.xpm", &img_size, &img_size);
-	game->assets.wall_img =
-			mlx_xpm_file_to_image(game->mlx,
-			"asset/wall.xpm", &img_size, &img_size);
+	game->assets.collection_img = ft_load_img(game, "../asset/collection.xpm");
+	game->assets.portal_img = ft_load_img(game, "../asset/portal.xpm");
+	game->assets.player_img = ft_load_img(game, "../asset/player.xpm");
+	game->assets.tile_img = ft_load_img(game, "../asset/tile.xpm");
+	game->assets.wall_img =	ft_load_img(game, "../asset/wall.xpm");
 }
 
 void	init_comp(t_game *game)
@@ -234,6 +223,7 @@ void	init_comp(t_game *game)
 	game->map_comp.collection_list.next = 0;
 	game->map_comp.portal_list.next = 0;
 	game->map_comp.num_player_spon = 0;
+	game->map_comp.num_collections = 0;
 }
 
 void	init_game(t_game *game, char *file_path)
@@ -292,12 +282,6 @@ void	draw_portal(t_game *game)
 	}
 }
 
-void	draw_component(t_game *game)
-{
-	draw_collection(game);
-	draw_portal(game);
-}
-
 void	draw_player(t_game *game)
 {
 	ft_put_img64(game, game->assets.player_img,
@@ -321,9 +305,6 @@ int	key_press(int keycode, t_game *game)
 	return (0);
 }
 
-const static int	g_coordinates_x[4] = {0, 0, -1, 1};
-const static int	g_coordinates_y[4] = {-1, 1, 0, 0};
-
 int	is_collision(t_game *game, int x, int y)
 {
 	return (game->map_info.map[y][x] == '1');
@@ -334,17 +315,14 @@ static t_collection	*find_collection_node(t_game *game)
 	int	player_x;
 	int	player_y;
 	t_collection	*node;
-	
+
 	player_x = game->player.pos.x;
 	player_y = game->player.pos.y;
 	node = game->map_comp.collection_list.next;
 	while (node)
 	{
 		if (node->pos.x == player_x && node->pos.y == player_y)
-		{
-			node->is_collected = 1;
 			return (node);
-		}
 		node = node->next;
 	}
 	return (0);
@@ -352,69 +330,34 @@ static t_collection	*find_collection_node(t_game *game)
 
 static void	collect_process(t_game *game)
 {
-	t_collection	*node;
+	if (find_collection_node(game))
+		game->player.num_collected++;
+	if (game->player.num_collected == game->map_comp.num_collections)
+		game->player.is_have_key = 1;
+}
 
-	node = find_collection_node(game);
-	if (node)
+static t_portal	*find_portal_node(t_game *game)
+{
+	int	player_x;
+	int	player_y;
+	t_portal	*node;
+
+	player_x = game->player.pos.x;
+	player_y = game->player.pos.y;
+	node = game->map_comp.portal_list.next;
+	while (node)
 	{
-
+		if (node->pos.x == player_x && node->pos.y == player_y)
+			return (node);
+		node = node->next;
 	}
+	return (0);
 }
 
-
-/**
- * @brief 
- * 
- * @param game 
- * @param dir
- * 두가지 방법이 있다. 일단 이동 유효성을 검사 한 상태이다.
- * 1. 플레이어가 이동할 곳과 있던 곳에 타일을 깐다.
- * 2. 포탈을 다시 깐다.
- * 3. 플레이어를 다시 깐다.
- */
-void	move_dir(t_game *game, int dir)
+static void	portal_process(t_game *game)
 {
-	int	target_x;
-	int	target_y;
-
-	target_x = game->player.pos.x + g_coordinates_x[dir];
-	target_y = game->player.pos.y + g_coordinates_y[dir];
-
-	if (is_collision(game, target_x, target_y))
-		return ;
-
-	ft_put_img64(game, game->assets.tile_img,
-			game->player.pos.x, game->player.pos.y);
-	game->player.pos.x = target_x;
-	game->player.pos.y = target_y;
-
-	//collect process
-	if (//collection locate)
-		//collect
-
-	if (game->player.is_collect_all)
-		//game clear
-
-	draw_portal(game);
-	draw_player(game);
+	if (find_portal_node(game) && game->player.is_have_key)
+		exit(0); // game done
 }
 
-void	move_up(t_game *game)
-{
-	move_dir(game, UP);
-}
 
-void	move_down(t_game *game)
-{
-	move_dir(game, DOWN);
-}
-
-void	move_left(t_game *game)
-{
-	move_dir(game, LEFT);
-}
-
-void	move_right(t_game *game)
-{
-	move_dir(game, RIGHT);
-}

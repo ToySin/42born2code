@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mlx.c                                           :+:      :+:    :+:   */
+/*   end.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/18 12:49:51 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 14:46:20 by donshin          ###   ########.fr       */
+/*   Created: 2022/03/22 15:41:33 by donshin           #+#    #+#             */
+/*   Updated: 2022/03/22 15:49:52 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	*ft_load_img(t_game *game, char *file_path)
+void	error_exit(char *msg)
 {
-	void	*img;
-	int		img_size = 64;
-
-	img = mlx_xpm_file_to_image(game->mlx, file_path, &img_size, &img_size);
-	if (!img)
-		error_exit("Xpm file to image fail.\n");
-	return (img);
+	ft_putendl_fd("Error", 1);
+	ft_putendl_fd(msg, 1);
+	exit(1);
 }
 
-void	ft_put_img64(t_game *game, void *img, int x, int y)
+int	close_exit(t_game *game)
 {
-	mlx_put_image_to_window(game->mlx, game->win, img,
-			x * BLOCK_SIZE, y * BLOCK_SIZE);
+	free(game->assets.collection_img);
+	exit(0);
 }
