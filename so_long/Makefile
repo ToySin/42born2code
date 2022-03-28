@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 14:03:47 by donshin           #+#    #+#              #
-#    Updated: 2022/03/22 17:12:58 by donshin          ###   ########.fr        #
+#    Updated: 2022/03/28 16:31:54 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,12 +58,12 @@ re: fclean all
 
 test:
 	$(MAKE) -C $(LIBFT_DIR)
-	$(MAKE) -C $(MLX_DIR)
 	$(CC) $(CLFAG) -o test.out test.c \
 		-L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME)
 	install_name_tool -change $(MLX) $(MLX_DIR)/$(MLX) test.out
 
 ctest: fclean
+	$(MAKE) -C $(MLX_DIR)
 	rm -f test.out
 
 .PHONY: all clean fclean re

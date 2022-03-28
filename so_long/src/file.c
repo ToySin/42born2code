@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:29:41 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 15:30:11 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/28 15:43:39 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	open_file(char *file_path)
 
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
-		error_exit("File open fail.\nCheck file path.\n");
+		error_exit("File open fail.\nCheck file path.");
 	return (fd);
 }
 
@@ -37,10 +37,12 @@ char	**read_file(int fd)
 			break ;
 		temp = ft_strjoin(save, line);
 		if (!temp)
-			error_exit("Map read fail.\n");
+			error_exit("Map read fail.");
 		free(save);
 		save = temp;
 	}
 	result = ft_split(save, '\n');
+	if (!result[0])
+		error_exit("Map read fail.");
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:44:45 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 15:50:08 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/28 17:40:15 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	key_press(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 		exit(0);
-	else if (keycode == KEY_W || keycode == KEY_UP)
+	else if (keycode == KEY_W)
 		move_up(game);
-	else if (keycode == KEY_A || keycode == KEY_LEFT)
+	else if (keycode == KEY_A)
 		move_left(game);
-	else if (keycode == KEY_S || keycode == KEY_DOWN)
+	else if (keycode == KEY_S)
 		move_down(game);
-	else if (keycode == KEY_D || keycode == KEY_RIGHT)
+	else if (keycode == KEY_D)
 		move_right(game);
 	else if (keycode == KEY_ESC)
 		exit(0);

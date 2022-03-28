@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 17:35:45 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/28 17:40:19 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_W 13
-
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_DOWN 125
-# define KEY_UP 126
 
 # define UP 0
 # define DOWN 1
@@ -107,7 +102,7 @@ void	*ft_load_img(t_game *game, char *file_path);
 void	ft_put_img64(t_game *game, void *img, int x, int y);
 
 void	error_exit(char *msg);
-int		close_exit(t_game *game);
+int		close_exit();
 
 int		open_file(char *file_path);
 char	**read_file(int fd);
@@ -132,7 +127,7 @@ void	init_comp(t_game *game);
 void	init_game(t_game *game, char *file_path);
 
 void	check_component_cnt(t_game *game);
-void	check_map_square(t_game *game);
+void	check_map_rectangle(t_game *game);
 void	check_map_surrounded(t_game *game);
 void	check_map_comp(char c);
 

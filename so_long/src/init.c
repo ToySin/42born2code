@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:43:41 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 17:35:58 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:57:34 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	init_map(t_game *game, char *file_path)
 
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
-		error_exit("Failed to open file.\n");
+		error_exit("Failed to open file.");
 	game->map_info.map = read_file(fd);
 	if (!game->map_info.map)
 		error_exit("Failed to read file.");
 	get_map_size(game);
 	get_map_component(game);
 	check_component_cnt(game);
-	check_map_square(game);
+	check_map_rectangle(game);
 	check_map_surrounded(game);
 }
 
