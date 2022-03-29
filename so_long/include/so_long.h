@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/28 17:40:19 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/29 10:09:17 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SO_LONG_H
 
 # include <fcntl.h>
+# include <stdio.h>
+# include <errno.h>
 
 # include "../lib/include/libft.h"
 # include "../lib/include/get_next_line.h"
@@ -21,10 +23,9 @@
 
 # define BLOCK_SIZE 64
 
-# define X_EVENT_KEY_PRESS 2
-# define X_EVENT_KEY_EXIT 17
+# define ON_KEYDOWN 2
+# define ON_DESTROY 17
 
-# define KEY_R 15
 # define KEY_ESC 53
 
 # define KEY_A 0
@@ -139,9 +140,5 @@ void	draw_player(t_game *game);
 int		key_press(int keycode, t_game *game);
 
 void	move_dir(t_game *game, int dir);
-void	move_up(t_game *game);
-void	move_down(t_game *game);
-void	move_left(t_game *game);
-void	move_right(t_game *game);
 
 #endif

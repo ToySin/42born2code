@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:46:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 16:39:30 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/29 00:19:35 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,4 @@ void	move_dir(t_game *game, int dir)
 	footprint_process(game);
 	draw_portal(game);
 	draw_player(game);
-}
-
-void	move_up(t_game *game)
-{
-	move_dir(game, UP);
-}
-
-void	move_down(t_game *game)
-{
-	move_dir(game, DOWN);
-}
-
-void	move_left(t_game *game)
-{
-	move_dir(game, LEFT);
-}
-
-void	move_right(t_game *game)
-{
-	move_dir(game, RIGHT);
 }

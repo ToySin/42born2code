@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 14:03:47 by donshin           #+#    #+#              #
-#    Updated: 2022/03/28 16:31:54 by donshin          ###   ########.fr        #
+#    Updated: 2022/03/29 10:08:19 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,13 +46,12 @@ all: $(NAME)
 
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
-	$(MAKE) clean -C $(MLX_DIR)
 	rm -f $(OBJS)
 
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) clean -C $(MLX_DIR)
 	rm -f $(NAME)
-	rm -f $(MLX_DIR)/$(MLX)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:25:09 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 15:25:40 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/29 00:21:13 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ void	draw_collection(t_game *game)
 	i_node = game->map_comp.collection_list.next;
 	while (i_node)
 	{
-		if (!(i_node->is_collected))
-			ft_put_img64(game, game->assets.collection_img,
-					i_node->pos.x, i_node->pos.y);
+		ft_put_img64(game, game->assets.collection_img,
+				i_node->pos.x, i_node->pos.y);
 		i_node = i_node->next;
 	}
 }

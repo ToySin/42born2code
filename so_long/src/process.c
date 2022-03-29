@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:31:02 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 16:38:55 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/29 10:12:08 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@ static t_collection	*find_collection_node(t_game *game)
 	while (node)
 	{
 		if (node->pos.x == player_x && node->pos.y == player_y)
-			return (node);
+		{
+			if (!node->is_collected)
+			{
+				node->is_collected = 1;
+				return (node);
+			}
+			else
+				return (0);
+		}
 		node = node->next;
 	}
 	return (0);
