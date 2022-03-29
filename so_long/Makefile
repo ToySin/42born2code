@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 14:03:47 by donshin           #+#    #+#              #
-#    Updated: 2022/03/29 10:08:19 by donshin          ###   ########.fr        #
+#    Updated: 2022/03/29 13:13:59 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,13 @@ OBJS = $(SRCS:.c=.o)
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
 	$(MAKE) -C $(MLX_DIR)
+	$(MAKE) -C ./mlx
 	$(CC) $(CFLAG) -o $@ $^ \
-		-L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME)
-	install_name_tool -change $(MLX) $(MLX_DIR)/$(MLX) $@
+		-L$(LIBFT_DIR) -l$(LIBFT_NAME) \
+		-L./mlx -lmlx -framework OpenGL -framework AppKit
+	# $(CC) $(CFLAG) -o $@ $^ \
+	# 	-L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME)
+	# install_name_tool -change $(MLX) $(MLX_DIR)/$(MLX) $@
 
 %.o: %.c
 	$(CC) $(CFLAG) -o $@ -c $^
@@ -51,6 +55,9 @@ clean:
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
 	$(MAKE) clean -C $(MLX_DIR)
+
+	$(MAKE) clean -C ./mlx
+
 	rm -f $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:43:11 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/22 17:12:12 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/29 10:40:57 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void	get_map_component(t_game *game)
 	int		row;
 	int		col;
 
+	game->map_comp.collection_list.next = 0;
+	game->map_comp.portal_list.next = 0;
+	game->map_comp.num_player_spon = 0;
+	game->map_comp.num_collections = 0;
 	map = game->map_info.map;
 	row = 0;
 	while (row < game->map_info.row)

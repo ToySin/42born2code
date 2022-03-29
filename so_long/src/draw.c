@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:25:09 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/29 00:21:13 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/29 12:12:50 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,10 @@ void	draw_player(t_game *game)
 {
 	ft_put_img64(game, game->assets.player_img,
 		game->player.pos.x, game->player.pos.y);
+}
+
+void	draw_tile_at_player(t_game *game)
+{
+	ft_put_img64(game, game->assets.tile_img,
+			game->player.pos.x, game->player.pos.y);
 }

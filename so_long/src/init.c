@@ -6,13 +6,13 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:43:41 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/28 16:57:34 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/29 11:16:22 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	init_map(t_game *game, char *file_path)
+static void	init_map(t_game *game, char *file_path)
 {
 	int	fd;
 
@@ -29,7 +29,7 @@ void	init_map(t_game *game, char *file_path)
 	check_map_surrounded(game);
 }
 
-void	init_player(t_game *game)
+static void	init_player(t_game *game)
 {
 	game->player.num_collected = 0;
 	game->player.is_have_key = 0;
@@ -37,7 +37,7 @@ void	init_player(t_game *game)
 	get_player_spon_site(game);
 }
 
-void	init_win(t_game *game)
+static void	init_win(t_game *game)
 {
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx,
@@ -45,7 +45,7 @@ void	init_win(t_game *game)
 			game->map_info.row * BLOCK_SIZE, "so_long");
 }
 
-void	init_img(t_game *game)
+static void	init_img(t_game *game)
 {
 	game->assets.collection_img = ft_load_img(game, "./asset/collection.xpm");
 	game->assets.portal_img = ft_load_img(game, "./asset/portal.xpm");
@@ -54,17 +54,8 @@ void	init_img(t_game *game)
 	game->assets.wall_img = ft_load_img(game, "./asset/wall.xpm");
 }
 
-void	init_comp(t_game *game)
-{
-	game->map_comp.collection_list.next = 0;
-	game->map_comp.portal_list.next = 0;
-	game->map_comp.num_player_spon = 0;
-	game->map_comp.num_collections = 0;
-}
-
 void	init_game(t_game *game, char *file_path)
 {
-	init_comp(game);
 	init_map(game, file_path);
 	init_player(game);
 	init_win(game);

@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/29 10:09:17 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/29 12:43:50 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	*ft_load_img(t_game *game, char *file_path);
 void	ft_put_img64(t_game *game, void *img, int x, int y);
 
 void	error_exit(char *msg);
-int		close_exit();
+int		close_exit(t_game *game);
 
 int		open_file(char *file_path);
 char	**read_file(int fd);
@@ -120,11 +120,6 @@ void	collect_process(t_game *game);
 void	portal_process(t_game *game);
 void	footprint_process(t_game *game);
 
-void	init_map(t_game *game, char *file_path);
-void	init_player(t_game *game);
-void	init_win(t_game *game);
-void	init_img(t_game *game);
-void	init_comp(t_game *game);
 void	init_game(t_game *game, char *file_path);
 
 void	check_component_cnt(t_game *game);
@@ -136,9 +131,8 @@ void	draw_map(t_game *game);
 void	draw_collection(t_game *game);
 void	draw_portal(t_game *game);
 void	draw_player(t_game *game);
+void	draw_tile_at_player(t_game *game);
 
 int		key_press(int keycode, t_game *game);
-
-void	move_dir(t_game *game, int dir);
 
 #endif

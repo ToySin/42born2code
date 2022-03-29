@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:29:41 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/28 15:43:39 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/29 11:17:36 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,15 @@ char	**read_file(int fd)
 		if (!line)
 			break ;
 		temp = ft_strjoin(save, line);
+		free(line);
 		if (!temp)
 			error_exit("Map read fail.");
 		free(save);
 		save = temp;
 	}
 	result = ft_split(save, '\n');
+	free(save);
 	if (!result[0])
-		error_exit("Map read fail.");
+		error_exit("Map read fail.emp");
 	return (result);
 }

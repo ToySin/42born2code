@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:34:49 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/29 10:11:42 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/29 10:18:33 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_collection	*get_collection_node(int x, int y)
 
 	node = malloc(sizeof(t_collection));
 	if (!node)
-		error_exit("Memory allocation fail\n");
+		error_exit("Memory allocation fail.");
 	node->pos.x = x;
 	node->pos.y = y;
 	node->is_collected = 0;
@@ -31,7 +31,7 @@ static t_portal	*get_portal_node(int x, int y)
 
 	node = malloc(sizeof(t_portal));
 	if (!node)
-		error_exit("Memory allocation fail\n");
+		error_exit("Memory allocation fail.");
 	node->pos.x = x;
 	node->pos.y = y;
 	return (node);
