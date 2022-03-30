@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:46:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/29 12:49:39 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/30 11:21:57 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ static void	move_dir(t_game *game, int dir)
 
 int	key_press(int keycode, t_game *game)
 {
-
-
-
 	if (keycode == KEY_ESC)
 		close_exit(game);
 	else if (keycode == KEY_W)

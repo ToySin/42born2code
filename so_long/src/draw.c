@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:25:09 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/29 12:12:50 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/30 12:27:01 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	draw_collection(t_game *game)
 	while (i_node)
 	{
 		ft_put_img64(game, game->assets.collection_img,
-				i_node->pos.x, i_node->pos.y);
+			i_node->pos.x, i_node->pos.y);
 		i_node = i_node->next;
 	}
 }
@@ -53,7 +53,7 @@ void	draw_portal(t_game *game)
 	while (i_node)
 	{
 		ft_put_img64(game, game->assets.portal_img,
-				i_node->pos.x, i_node->pos.y);
+			i_node->pos.x, i_node->pos.y);
 		i_node = i_node->next;
 	}
 }
@@ -67,5 +67,5 @@ void	draw_player(t_game *game)
 void	draw_tile_at_player(t_game *game)
 {
 	ft_put_img64(game, game->assets.tile_img,
-			game->player.pos.x, game->player.pos.y);
+		game->player.pos.x, game->player.pos.y);
 }

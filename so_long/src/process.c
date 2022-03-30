@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:31:02 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/29 10:12:08 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/30 12:28:26 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static t_collection	*find_collection_node(t_game *game)
 {
-	int	player_x;
-	int	player_y;
+	int				player_x;
+	int				player_y;
 	t_collection	*node;
 
 	player_x = game->player.pos.x;
@@ -40,8 +40,8 @@ static t_collection	*find_collection_node(t_game *game)
 
 static t_portal	*find_portal_node(t_game *game)
 {
-	int	player_x;
-	int	player_y;
+	int			player_x;
+	int			player_y;
 	t_portal	*node;
 
 	player_x = game->player.pos.x;
