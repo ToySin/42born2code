@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:29:41 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/30 16:59:40 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/30 17:59:35 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	open_file(char *file_path)
 
 	suffix = ft_substr(file_path, ft_strlen(file_path) - 4, 4);
 	if (ft_strncmp(".ber", suffix, 4))
-		error_exit("Invalid suffix");
+		error_exit("Unavailable suffix.");
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
 		error_exit("Failed to open file.");
@@ -45,13 +45,13 @@ char	**read_file(int fd)
 		temp = ft_strjoin(save, line);
 		free(line);
 		if (!temp)
-			error_exit("Map read fail.");
+			error_exit("Failed to read map.");
 		free(save);
 		save = temp;
 	}
 	result = ft_split(save, '\n');
 	free(save);
-	if (!result[0])
-		error_exit("Map read fail.emp");
+	if (!result || !result[0])
+		error_exit("Failed to read map.");
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:43:11 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/29 10:40:57 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/30 17:33:38 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	get_map_component(t_game *game)
 		col = 0;
 		while (col < game->map_info.col)
 		{
-			check_map_comp(map[row][col]);
 			if (map[row][col] == 'P')
 				game->map_comp.num_player_spon++;
 			else if (map[row][col] == 'C')

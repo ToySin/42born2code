@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 14:03:47 by donshin           #+#    #+#              #
-#    Updated: 2022/03/30 10:49:16 by donshin          ###   ########.fr        #
+#    Updated: 2022/03/30 17:11:09 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,14 @@ LIBFT_DIR = ./lib
 LIBFT_NAME = ft
 LIBFT = libft.a
 
-MLX_DIR = ./mlx_beta
+MLX_DIR = ./mlx
 MLX_NAME = mlx
-MLX = libmlx.dylib
+MLX = libmlx.a
 
 CC = gcc
 CFLAG = -Wall -Wextra -Werror
+CLIB = -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME) \
+	-framework OpenGL -framework AppKit
 
 INCLUDE_DIR = ./include
 
@@ -35,12 +37,7 @@ OBJS = $(SRCS:.c=.o)
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
 	$(MAKE) -C ./mlx
-	$(CC) $(CFLAG) -o $@ $^ \
-		-L$(LIBFT_DIR) -l$(LIBFT_NAME) \
-		-L./mlx -lmlx -framework OpenGL -framework AppKit
-	# $(MAKE) -C $(MLX_DIR)
-	# $(CC) $(CFLAG) -o $@ $^ \
-	# 	-L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME)
+	$(CC) $(CFLAG) $(CLIB) -o $@ $^
 	# install_name_tool -change $(MLX) $(MLX_DIR)/$(MLX) $@
 
 %.o: %.c

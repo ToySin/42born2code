@@ -6,8 +6,16 @@ echo "Wrong usage2: './so_long map/map1.ber map/map2.ber'"
 ./so_long map/map1.ber map/map2.ber
 echo
 
-echo "Not exist file: './so_long map/not_exist_file'"
-./so_long map/not_exist_file
+echo "Not exist file: './so_long map/not_exist_file.ber'"
+./so_long map/not_exist_file.ber
+echo
+
+echo "Wrong suffix1: './so_long map/wrong_suffix.ver'"
+./so_long map/wrong_suffix.ver
+echo
+
+echo "Wrong suffix2: './so_long ber'"
+./so_long ber
 echo
 
 echo "Empty map file: './so_long map/empty_map.ber'"
@@ -36,3 +44,7 @@ echo
 
 echo "Map is not surrounded by walls: './so_long map/not_surrounded.ber'"
 ./so_long map/not_surrounded.ber
+echo
+
+echo "Invalid component is exist: './so_long map/invalid_comp.ber'"
+./so_long map/invalid_comp.ber

@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:45:31 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/29 00:28:51 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/30 18:08:30 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,21 @@ void	check_map_surrounded(t_game *game)
 	}
 }
 
-void	check_map_comp(char c)
+void	check_map_comp(t_game *game)
 {
-	if (!ft_strchr("10PCE", (int)c))
-		error_exit("Invalid map component.");
+	int		row;
+	int		col;
+
+	row = 0;
+	while (row < game->map_info.row)
+	{
+		col = 0;
+		while (col < game->map_info.col)
+		{
+			if (!ft_strchr("10PCE", game->map_info.map[row][col]))
+				error_exit("Invalid component found.");
+			col++;
+		}
+		row++;
+	}
 }
