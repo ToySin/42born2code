@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:43:41 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/29 11:16:22 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/30 16:55:15 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ static void	init_map(t_game *game, char *file_path)
 {
 	int	fd;
 
-	fd = open(file_path, O_RDONLY);
-	if (fd < 0)
-		error_exit("Failed to open file.");
+	fd = open_file(file_path);
 	game->map_info.map = read_file(fd);
 	if (!game->map_info.map)
 		error_exit("Failed to read file.");
