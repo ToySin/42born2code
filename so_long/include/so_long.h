@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/30 18:26:08 by donshin          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:56:15 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "../lib/include/libft.h"
 # include "../lib/include/get_next_line.h"
-# include "../mlx_beta/mlx.h"
+# include "../mlx/mlx.h"
 
 # define BLOCK_SIZE 64
 
