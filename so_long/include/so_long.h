@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:05:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/31 12:56:15 by donshin          ###   ########.fr       */
+/*   Updated: 2022/04/04 16:24:48 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define SO_LONG_H
 
 # include <fcntl.h>
-# include <stdio.h>
-# include <errno.h>
 
 # include "../lib/include/libft.h"
 # include "../lib/include/get_next_line.h"

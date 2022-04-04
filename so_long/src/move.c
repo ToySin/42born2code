@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 14:46:37 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/30 11:21:57 by donshin          ###   ########.fr       */
+/*   Updated: 2022/04/04 17:06:09 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static void	move_dir(t_game *game, int dir)
 	draw_tile_at_player(game);
 	game->player.pos.x = target_x;
 	game->player.pos.y = target_y;
-	draw_tile_at_player(game);
 	collect_process(game);
 	portal_process(game);
 	footprint_process(game);
+	draw_tile_at_player(game);
 	draw_portal(game);
 	draw_player(game);
 }
