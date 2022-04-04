@@ -6,7 +6,7 @@
 #    By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/18 14:03:47 by donshin           #+#    #+#              #
-#    Updated: 2022/04/01 09:33:37 by donshin          ###   ########.fr        #
+#    Updated: 2022/04/04 16:16:47 by donshin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,12 @@ CLIB = -L$(LIBFT_DIR) -l$(LIBFT_NAME) -L$(MLX_DIR) -l$(MLX_NAME) \
 	-framework OpenGL -framework AppKit
 
 SRC_DIR = ./src
-SRCS = $(SRC_DIR)/draw.c $(SRC_DIR)/end.c $(SRC_DIR)/file.c \
-	$(SRC_DIR)/ft_mlx.c $(SRC_DIR)/init.c $(SRC_DIR)/lst_add.c \
-	$(SRC_DIR)/move.c $(SRC_DIR)/process.c $(SRC_DIR)/so_long.c \
-	$(SRC_DIR)/utils.c $(SRC_DIR)/check.c
+SRCS = $(SRC_DIR)/check.c $(SRC_DIR)/draw.c $(SRC_DIR)/end.c \
+	$(SRC_DIR)/file.c $(SRC_DIR)/ft_mlx.c $(SRC_DIR)/init.c \
+	$(SRC_DIR)/lst_add.c $(SRC_DIR)/move.c $(SRC_DIR)/process.c \
+	$(SRC_DIR)/so_long.c $(SRC_DIR)/utils.c
 OBJS = $(SRCS:.c=.o)
 
-.PHONY: all
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -40,16 +39,15 @@ $(NAME): $(OBJS)
 	$(MAKE) -C $(MLX_DIR)
 	$(CC) $(CFLAG) $(CLIB) -o $@ $^
 
-.PHONY: clean
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
 	$(MAKE) clean -C $(MLX_DIR)
 	rm -f $(OBJS)
 
-.PHONY: fclean
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
 	rm -f $(NAME)
 
-.PHONY: re
 re: fclean all
+
+.PHONY: all clean fclean re
