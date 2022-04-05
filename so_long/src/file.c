@@ -6,13 +6,11 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:29:41 by donshin           #+#    #+#             */
-/*   Updated: 2022/03/30 17:59:35 by donshin          ###   ########.fr       */
+/*   Updated: 2022/04/05 16:07:04 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-#include <stdio.h>
 
 int	open_file(char *file_path)
 {
