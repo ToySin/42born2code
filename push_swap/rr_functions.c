@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_functions.c                                      :+:      :+:    :+:   */
+/*   rr_functions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 15:28:41 by donshin           #+#    #+#             */
-/*   Updated: 2022/05/24 12:31:19 by donshin          ###   ########.fr       */
+/*   Created: 2022/05/24 12:30:20 by donshin           #+#    #+#             */
+/*   Updated: 2022/05/24 20:05:24 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_deque *a, t_deque *b)
+void	rra(t_deque *a)
 {
-	if (b->size > 0)
-	{
-		push_front(a, pop_front(b));
-	}
+	push_front(a, pop_back(a));
 }
 
-void	pb(t_deque *a, t_deque *b)
+void	rrb(t_deque *b)
 {
-	if (a->size > 0)
-	{
-		push_front(b, pop_front(a));
-	}
+	push_front(b, pop_back(b));
+}
+
+void	rrr(t_deque *a, t_deque *b)
+{
+	rra(a);
+	rrb(b);
 }
