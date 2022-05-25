@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 15:13:15 by donshin           #+#    #+#             */
-/*   Updated: 2022/05/25 20:25:16 by donshin          ###   ########.fr       */
+/*   Created: 2021/11/17 10:25:46 by donshin           #+#    #+#             */
+/*   Updated: 2021/11/23 20:54:04 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	unsigned int	index;
 
-# include "libft.h"
-
-# include "my_struct.h"
-
-void	sa(t_deque *a);
-void	sb(t_deque *b);
-void	ss(t_deque *a, t_deque *b);
-void	pa(t_deque *a, t_deque *b);
-void	pb(t_deque *a, t_deque *b);
-void	ra(t_deque *a);
-void	rb(t_deque *b);
-void	rr(t_deque *a, t_deque *b);
-void	rra(t_deque *a);
-void	rrb(t_deque *b);
-void	rrr(t_deque *a, t_deque *b);
-
-#endif
+	if (!s || !f)
+		return ;
+	index = 0;
+	while (*s)
+	{
+		f(index, s++);
+		index++;
+	}
+}

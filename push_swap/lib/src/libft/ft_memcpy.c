@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 15:13:15 by donshin           #+#    #+#             */
-/*   Updated: 2022/05/25 20:25:16 by donshin          ###   ########.fr       */
+/*   Created: 2021/11/12 21:15:21 by donshin           #+#    #+#             */
+/*   Updated: 2021/11/23 19:26:21 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../include/libft.h"
 
-# include "libft.h"
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t			index;
+	unsigned char	*rst;
 
-# include "my_struct.h"
-
-void	sa(t_deque *a);
-void	sb(t_deque *b);
-void	ss(t_deque *a, t_deque *b);
-void	pa(t_deque *a, t_deque *b);
-void	pb(t_deque *a, t_deque *b);
-void	ra(t_deque *a);
-void	rb(t_deque *b);
-void	rr(t_deque *a, t_deque *b);
-void	rra(t_deque *a);
-void	rrb(t_deque *b);
-void	rrr(t_deque *a, t_deque *b);
-
-#endif
+	if (!dest && !src)
+		return (0);
+	rst = (unsigned char *)dest;
+	index = 0;
+	while (index < n)
+	{
+		*(unsigned char *)dest = *(const unsigned char *)src;
+		index++;
+		dest++;
+		src++;
+	}
+	return ((void *)rst);
+}

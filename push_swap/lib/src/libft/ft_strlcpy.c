@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 15:13:15 by donshin           #+#    #+#             */
-/*   Updated: 2022/05/25 20:25:16 by donshin          ###   ########.fr       */
+/*   Created: 2021/11/12 21:17:08 by donshin           #+#    #+#             */
+/*   Updated: 2022/03/01 18:11:47 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../include/libft.h"
 
-# include "libft.h"
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	index;
 
-# include "my_struct.h"
-
-void	sa(t_deque *a);
-void	sb(t_deque *b);
-void	ss(t_deque *a, t_deque *b);
-void	pa(t_deque *a, t_deque *b);
-void	pb(t_deque *a, t_deque *b);
-void	ra(t_deque *a);
-void	rb(t_deque *b);
-void	rr(t_deque *a, t_deque *b);
-void	rra(t_deque *a);
-void	rrb(t_deque *b);
-void	rrr(t_deque *a, t_deque *b);
-
-#endif
+	index = 0;
+	while (index + 1 < size && src[index])
+	{
+		dst[index] = src[index];
+		index++;
+	}
+	if (size)
+		dst[index] = '\0';
+	return (ft_strlen(src));
+}

@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 15:13:15 by donshin           #+#    #+#             */
-/*   Updated: 2022/05/25 20:25:16 by donshin          ###   ########.fr       */
+/*   Created: 2021/11/12 23:07:38 by donshin           #+#    #+#             */
+/*   Updated: 2021/11/23 19:50:42 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../include/libft.h"
 
-# include "libft.h"
+char	*ft_substr(const char *s, unsigned int start, size_t len)
+{
+	char	*sub;
+	size_t	s_len;
 
-# include "my_struct.h"
-
-void	sa(t_deque *a);
-void	sb(t_deque *b);
-void	ss(t_deque *a, t_deque *b);
-void	pa(t_deque *a, t_deque *b);
-void	pb(t_deque *a, t_deque *b);
-void	ra(t_deque *a);
-void	rb(t_deque *b);
-void	rr(t_deque *a, t_deque *b);
-void	rra(t_deque *a);
-void	rrb(t_deque *b);
-void	rrr(t_deque *a, t_deque *b);
-
-#endif
+	if (!s)
+		return (0);
+	s_len = ft_strlen(s);
+	if (s_len <= start)
+		return (ft_strdup(""));
+	if (s_len - start < len)
+		len = s_len - start;
+	sub = (char *)malloc(sizeof(char) * (len + 1));
+	if (!sub)
+		return (0);
+	ft_strlcpy(sub, s + start, len + 1);
+	return (sub);
+}

@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 15:13:15 by donshin           #+#    #+#             */
-/*   Updated: 2022/05/25 20:25:16 by donshin          ###   ########.fr       */
+/*   Created: 2021/11/17 01:25:31 by donshin           #+#    #+#             */
+/*   Updated: 2022/03/01 18:11:47 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../include/libft.h"
 
-# include "libft.h"
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*node;
 
-# include "my_struct.h"
-
-void	sa(t_deque *a);
-void	sb(t_deque *b);
-void	ss(t_deque *a, t_deque *b);
-void	pa(t_deque *a, t_deque *b);
-void	pb(t_deque *a, t_deque *b);
-void	ra(t_deque *a);
-void	rb(t_deque *b);
-void	rr(t_deque *a, t_deque *b);
-void	rra(t_deque *a);
-void	rrb(t_deque *b);
-void	rrr(t_deque *a, t_deque *b);
-
-#endif
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
+		return (0);
+	node->content = (char *)content;
+	node->next = 0;
+	return (node);
+}

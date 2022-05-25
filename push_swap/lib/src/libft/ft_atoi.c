@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 15:13:15 by donshin           #+#    #+#             */
-/*   Updated: 2022/05/25 20:25:16 by donshin          ###   ########.fr       */
+/*   Created: 2021/11/12 21:13:06 by donshin           #+#    #+#             */
+/*   Updated: 2021/12/02 14:03:33 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../include/libft.h"
 
-# include "libft.h"
+int	ft_atoi(const char *nptr)
+{
+	long	result;
+	int		sign;
 
-# include "my_struct.h"
-
-void	sa(t_deque *a);
-void	sb(t_deque *b);
-void	ss(t_deque *a, t_deque *b);
-void	pa(t_deque *a, t_deque *b);
-void	pb(t_deque *a, t_deque *b);
-void	ra(t_deque *a);
-void	rb(t_deque *b);
-void	rr(t_deque *a, t_deque *b);
-void	rra(t_deque *a);
-void	rrb(t_deque *b);
-void	rrr(t_deque *a, t_deque *b);
-
-#endif
+	while ((9 <= *nptr && *nptr <= 13) || *nptr == 32)
+		nptr++;
+	sign = 1;
+	if (*nptr == '+' || *nptr == '-')
+		if (*nptr++ == '-')
+			sign = -1;
+	result = 0;
+	while (ft_isdigit(*nptr))
+		result = result * 10 + (*nptr++ - '0');
+	if (result < 0)
+		return ((sign + 1) / -2);
+	return (sign * result);
+}
