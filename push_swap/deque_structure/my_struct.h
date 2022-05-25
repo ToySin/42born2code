@@ -6,7 +6,7 @@
 /*   By: donshin <donshin@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:55:41 by donshin           #+#    #+#             */
-/*   Updated: 2022/05/02 01:03:09 by donshin          ###   ########.fr       */
+/*   Updated: 2022/05/25 19:38:12 by donshin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,5 @@ t_node	*pop_front(t_deque *deque);
 t_node	*pop_back(t_deque *deque);
 void	*push_front(t_deque *deque, t_node *node);
 void	*push_back(t_deque *deque, t_node *node);
-
-
-
 
 #endif
